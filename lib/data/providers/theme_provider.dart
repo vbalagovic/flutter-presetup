@@ -30,6 +30,6 @@ class ThemeNotifier extends StateNotifier<ThemeState> {
 
   void setThemeMode(ThemeMode mode) {
     state = state.copyWith(mode: mode); // mode;
-    KvzTheme.saveThemeMode(mode);
+    FpTheme.saveThemeMode(mode);
   }
 }

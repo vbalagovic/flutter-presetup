@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:presetup/data/repositories/auth_repository.dart';
+import 'package:presetup/utilities/enum.dart';
 
 final firebaseAuthProvider = Provider<FirebaseAuth>((ref) => FirebaseAuth.instance);
 
@@ -26,6 +27,15 @@ class SignInNotifier extends AutoDisposeAsyncNotifier<void> {
     final authRepository = ref.read(authRepositoryProvider);
     state = const AsyncLoading();
     state = await AsyncValue.guard(authRepository.signInAnonymously);
+  }
+
+  Future<AuthResultStatus> signInWithCredential(credential) async {
+    final authRepository = ref.read(authRepositoryProvider);
+    try {
+      return await authRepository.signInWithCredential(credential);
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 
   Future<void> signOut() {

@@ -25,9 +25,9 @@ class FpButton extends StatelessWidget {
           padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(vertical: 12, horizontal: 16)),
           backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
             if (states.contains(MaterialState.disabled)) {
-              return KvzTheme.of(context).primaryColor.withOpacity(0.7);
+              return FpTheme.of(context).primaryColor.withOpacity(0.7);
             }
-            return KvzTheme.of(context).primaryColor;
+            return FpTheme.of(context).primaryColor;
           }),
         ),
         onPressed: !isLoading ? onPressed : null,
@@ -46,7 +46,7 @@ class FpButton extends StatelessWidget {
             const SizedBox(
               width: 8,
             ),
-          Text(title, style: KvzTheme.of(context).bodyText1.copyWith(color: KvzTheme.of(context).primaryBtnText))
+          Text(title, style: FpTheme.of(context).bodyText1.copyWith(color: FpTheme.of(context).primaryBtnText))
         ]));
   }
 }

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:presetup/data/providers/auth_provider.dart';
 import 'package:presetup/flavor_banner.dart';
+import 'package:presetup/screens/login_screen/widgets/social_login.dart';
 import 'package:presetup/widgets/fp_button.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -50,6 +51,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               onPressed: state.isLoading ? null : () => ref.read(signInProvider.notifier).signInAnonymously(),
               isLoading: state.isLoading,
             ),
+
+            SocialLogin()
           ],
         )), // This trailing comma makes auto-formatting nicer for build methods.
       ),
