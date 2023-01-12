@@ -2,6 +2,7 @@
 
 import 'package:presetup/flavor_config.dart';
 import 'package:presetup/main_common.dart';
+import 'firebase_options_dev.dart';
 
 void main() {
   FlavorConfig(
@@ -18,5 +19,5 @@ void main() {
     ),
   );
 
-  mainCommon();
+  mainCommon(DefaultFirebaseOptions.currentPlatform);
 }

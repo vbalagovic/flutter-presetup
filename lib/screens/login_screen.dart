@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -31,6 +33,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       version = packageInfo.version;
       buildNumber = packageInfo.buildNumber;
     });
+
+    await FirebaseAnalytics.instance.logEvent(
+      name: 'Login Screen seen',
+    );
   }
 
   @override
@@ -38,7 +44,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     return FlavorBanner(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Login"),
+          title: Text("Login").tr(),
         ),
         body: Center(
             child: Column(

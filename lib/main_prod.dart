@@ -1,3 +1,4 @@
+import 'package:presetup/firebase_options_prod.dart';
 import 'package:presetup/flavor_config.dart';
 import 'package:presetup/main_common.dart';
 
@@ -16,5 +17,5 @@ void main() {
     ),
   );
 
-  mainCommon();
+  mainCommon(DefaultFirebaseOptions.currentPlatform);
 }
