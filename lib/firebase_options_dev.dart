@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -26,7 +29,7 @@ class DefaultFirebaseOptions {
         return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
+          'DefaultFirebaseOptions have not been configured for macos - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
@@ -46,31 +49,21 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    authDomain: '',
-    storageBucket: '',
-    measurementId: '',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    storageBucket: '',
+    apiKey: 'AIzaSyAdjRCDWVuERTpxzHyzLfqjVw8p-8p6VmI',
+    appId: '1:625096301998:android:738a8c4be3a402a1e47c3f',
+    messagingSenderId: '625096301998',
+    projectId: 'flutter-presetup',
+    storageBucket: 'flutter-presetup.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    storageBucket: '',
-    iosClientId: '',
-    iosBundleId: '',
+    apiKey: 'AIzaSyDr1W-ZB4zBMxugK88bXGERwSGne4dAJjY',
+    appId: '1:625096301998:ios:88cf9f4c8846b429e47c3f',
+    messagingSenderId: '625096301998',
+    projectId: 'flutter-presetup',
+    storageBucket: 'flutter-presetup.appspot.com',
+    iosClientId: '625096301998-hajgr14ln5rj4h0bn8qh719vaqp22kru.apps.googleusercontent.com',
+    iosBundleId: 'com.example.presetup',
   );
 }

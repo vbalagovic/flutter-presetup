@@ -1,3 +1,46 @@
 {
-
+  "project_info": {
+    "project_number": "625096301998",
+    "project_id": "flutter-presetup",
+    "storage_bucket": "flutter-presetup.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625096301998:android:738a8c4be3a402a1e47c3f",
+        "android_client_info": {
+          "package_name": "com.example.presetup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625096301998-ltpp99oh247e0id416uqo0oa9d9m3mtg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdjRCDWVuERTpxzHyzLfqjVw8p-8p6VmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625096301998-ltpp99oh247e0id416uqo0oa9d9m3mtg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "625096301998-hajgr14ln5rj4h0bn8qh719vaqp22kru.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.presetup"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
 }

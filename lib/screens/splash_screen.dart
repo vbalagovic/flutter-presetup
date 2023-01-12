@@ -14,7 +14,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 1)).then((value) async {
-      router.go("/login");
+      ref.read(routerProvider).go("/login");
     });
   }
   @override

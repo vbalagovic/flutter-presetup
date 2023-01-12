@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:package_info_plus/package_info_plus.dart';
+import 'package:presetup/data/providers/auth_provider.dart';
 import 'package:presetup/flavor_banner.dart';
+import 'package:presetup/widgets/fp_button.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -13,27 +16,15 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
+  static const Key anonymousButtonKey = Key('anonymus');
+
   @override
   void initState() {
     getInfo();
     super.initState();
   }
 
-  String appName = "";
-  String packageName = "";
-  String version = "";
-  String buildNumber = "";
-
   void getInfo() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-
-    setState(() {
-      appName = packageInfo.appName;
-      packageName = packageInfo.packageName;
-      version = packageInfo.version;
-      buildNumber = packageInfo.buildNumber;
-    });
-
     await FirebaseAnalytics.instance.logEvent(
       name: 'Login Screen seen',
     );
@@ -41,18 +32,24 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<AsyncValue>(
+      signInProvider,
+      (_, state) => log("Error"),
+    );
+    final state = ref.watch(signInProvider);
+
     return FlavorBanner(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Login").tr(),
-        ),
         body: Center(
             child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("App Name: $appName"),
-            Text("packageName: $packageName"),
-            Text("version: $version"),
-            Text("buildNumber: $buildNumber"),
+            FpButton(
+              key: anonymousButtonKey,
+              title: tr("Skip Login"),
+              onPressed: state.isLoading ? null : () => ref.read(signInProvider.notifier).signInAnonymously(),
+              isLoading: state.isLoading,
+            ),
           ],
         )), // This trailing comma makes auto-formatting nicer for build methods.
       ),

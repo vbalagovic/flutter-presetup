@@ -87,6 +87,27 @@ flutterfire configure --project=<project-name>
 
 This automatically registers your per-platform apps with Firebase and adds a lib/firebase_options.dart configuration file to your Flutter project.
 
+___________
+
+## Authentication
+
+### Firebase login
+
+- Riverpod with go router is added to listen for changes in auth state
+- Anonymus login works by default when you enable it on firebase with this code
+- Social Login coming next
+
+___________
+
+## Extracted widgets
+
+### Theme
+
+- theme is extracted to FPTheme class and can be used and updated also the dark version data is there
+- FPButton is extracted component with integrated loader
+
+___________
+
 ## Cleaner
 
 You can clean project build with this script
