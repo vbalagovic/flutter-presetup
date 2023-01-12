@@ -1,6 +1,6 @@
 # Flutter Presetup project
 
-This is a small project that saves me time when I need to start new project from scratch including flavors and firebase. It's kinda suited to my needs but it may help someone. Currently it's focused on iOS and Android
+This is a small project that saves me time when I need to start new project from scratch including flavors and firebase. It's kinda suited to my needs but it may help someone. Currently it's focused on iOS and Android.
 
 ## Dependencies & versions
 
@@ -18,6 +18,7 @@ Dependencies used:
 - Go router
 - Riverpod
 - Flutter launcher icons
+- flavors
 
 ### Step 1) Update project name
 
