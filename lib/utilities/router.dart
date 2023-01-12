@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:kvizio/screens/dashboard_screen.dart';
-import 'package:kvizio/screens/login_screen.dart';
-import 'package:kvizio/screens/splash_screen.dart';
+import 'package:presetup/screens/dashboard_screen.dart';
+import 'package:presetup/screens/login_screen.dart';
+import 'package:presetup/screens/splash_screen.dart';
 
 // GoRouter configuration
 final router = GoRouter(

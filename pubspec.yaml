@@ -1,4 +1,4 @@
-name: kvizio
+name: presetup
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -42,6 +42,9 @@ dependencies:
   google_fonts: ^3.0.1
   shared_preferences: ^2.0.15
   freezed_annotation: ^2.2.0
+  change_app_package_name: ^1.1.0
+  flutter_launcher_icons: ^0.11.0
+  package_info_plus: ^3.0.2
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +73,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/translations/
+    - assets/launcher_icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,4 +1,4 @@
-package com.example.kvizio
+package com.example.presetup
 
 import io.flutter.embedding.android.FlutterActivity
 

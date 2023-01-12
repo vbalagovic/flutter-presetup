@@ -1,6 +1,4 @@
 // ignore_for_file: overridden_fields, annotate_overrides
-
-import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

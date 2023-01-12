@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "kvizio" "\0"
+            VALUE "FileDescription", "Flutter" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "kvizio" "\0"
+            VALUE "InternalName", "Flutter" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "kvizio.exe" "\0"
-            VALUE "ProductName", "kvizio" "\0"
+            VALUE "OriginalFilename", "presetup.exe" "\0"
+            VALUE "ProductName", "Flutter" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
