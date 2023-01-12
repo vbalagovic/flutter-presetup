@@ -13,7 +13,7 @@ enum DeviceSize {
   desktop,
 }
 
-abstract class KvzTheme {
+abstract class FpTheme {
   static DeviceSize deviceSize = DeviceSize.mobile;
 
   static Future initialize() async =>
@@ -29,7 +29,7 @@ abstract class KvzTheme {
       ? _prefs?.remove(kThemeModeKey)
       : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
 
-  static KvzTheme of(BuildContext context) =>
+  static FpTheme of(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark
           ? DarkModeTheme()
           : LightModeTheme();
@@ -96,7 +96,7 @@ DeviceSize getDeviceSize(BuildContext context) {
   }
 }
 
-class LightModeTheme extends KvzTheme {
+class LightModeTheme extends FpTheme {
   late Color primaryColor = const Color(0xFF19289B);
   late Color secondaryColor = const Color(0xFF5CC1B4);
   late Color tertiaryColor = const Color(0xFFEC5685);
@@ -147,7 +147,7 @@ abstract class Typography {
 class MobileTypography extends Typography {
   MobileTypography(this.theme);
 
-  final KvzTheme theme;
+  final FpTheme theme;
 
   String get title1Family => 'Inter';
   TextStyle get title1 => GoogleFonts.getFont(
@@ -211,7 +211,7 @@ class MobileTypography extends Typography {
 class TabletTypography extends Typography {
   TabletTypography(this.theme);
 
-  final KvzTheme theme;
+  final FpTheme theme;
 
   String get title1Family => 'Inter';
   TextStyle get title1 => GoogleFonts.getFont(
@@ -273,7 +273,7 @@ class TabletTypography extends Typography {
 class DesktopTypography extends Typography {
   DesktopTypography(this.theme);
 
-  final KvzTheme theme;
+  final FpTheme theme;
 
   String get title1Family => 'Inter';
   TextStyle get title1 => GoogleFonts.getFont(
@@ -332,7 +332,7 @@ class DesktopTypography extends Typography {
       );
 }
 
-class DarkModeTheme extends KvzTheme {
+class DarkModeTheme extends FpTheme {
   late Color primaryColor = const Color(0xFF8377F3);
   late Color secondaryColor = const Color(0xFF5CC1B4);
   late Color tertiaryColor = const Color(0xFFEC5685);
