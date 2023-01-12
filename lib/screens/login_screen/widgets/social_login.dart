@@ -71,25 +71,27 @@ class SocialLogin extends ConsumerWidget {
       handleSocialLogin(result);
 
       return result;
-    }
+    }*/
 
     Future<AuthResultStatus> signInWithApple() async {
       log("apple sign in");
-      final AuthResultStatus result = await AuthService().appleSignIn();
+      final AuthResultStatus result = await AuthService(ref).appleSignIn();
+
+      log(result.toString());
 
       if (result == AuthResultStatus.successful) {
         await redirectOnLogin();
       }
       handleSocialLogin(result);
       return result;
-    } */
+    }
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 25),
       child: SizedBox(
         width: Platform.isIOS ? sizeW * 60 : sizeW * 40,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -97,6 +99,12 @@ class SocialLogin extends ConsumerWidget {
               title: "Google Login",
               onPressed: () async {
                 await signInWithGoogle();
+              },
+            ),
+            if (Platform.isIOS) FpButton(
+              title: "Apple Login",
+              onPressed: () async {
+                await signInWithApple();
               },
             ),
           ],

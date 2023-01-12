@@ -50,6 +50,8 @@ dependencies:
   firebase_auth: ^4.2.5
   flutter_easyloading: ^3.0.5
   google_sign_in: ^5.4.3
+  sign_in_with_apple: ^4.3.0
+  crypto: ^3.0.2
 
 dev_dependencies:
   flutter_test:

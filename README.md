@@ -96,7 +96,7 @@ ___________
 
 - Riverpod with go router is added to listen for changes in auth state
 - Anonymus login works by default when you enable it on firebase with this code
-- Social Login coming next
+- Social Login updates are coming
 
 #### Google social login
 
@@ -105,6 +105,10 @@ Social login with google has been implemented as example. You need to add google
 ```bash
 sh setup_google_login.sh
 ```
+
+#### Apple social login
+
+Apple social login for iOS should work when you setup your Firebase (enable apple signup) and add "Sign in with apple capabilities" on your apple developer account to this identifier. Update provision file or just open xcode and recheck automatic provisioning if it's not working.
 
 ___________
 

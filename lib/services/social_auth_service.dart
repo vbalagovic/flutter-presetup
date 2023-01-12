@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:math' as dm;
 
@@ -7,6 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:presetup/data/providers/auth_provider.dart';
 import 'package:presetup/utilities/enum.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:crypto/crypto.dart';
 
 class AuthService {
   AuthService(this.ref);
@@ -71,7 +74,7 @@ class AuthService {
       EasyLoading.dismiss();
       return AuthResultStatus.undefined;
     }
-  }
+  }*/
 
   /// Generates a cryptographically secure random nonce, to be included in a
   /// credential request.
@@ -106,10 +109,11 @@ class AuthService {
       EasyLoading.show();
       final credential = OAuthProvider("apple.com")
           .credential(idToken: appleResult.identityToken, rawNonce: rawNonce);
-      status = await signInWithCredential(credential);
+      status = await ref.read(signInProvider.notifier).signInWithCredential(credential);
 
       return status;
     } on SignInWithAppleAuthorizationException catch (error) {
+      inspect(error);
       if (error.code == AuthorizationErrorCode.unknown ||
           error.code == AuthorizationErrorCode.canceled) {
         return AuthResultStatus.cancelled;
@@ -137,17 +141,7 @@ class AuthService {
     }
   } */
 
-  Future<void> logOut() async {
-    EasyLoading.show();
-    auth.signOut().then((value) async {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.remove('token');
-      EasyLoading.dismiss();
-      router.replace(ErsRoute.login);
-    });
-  }
-
-  Future deleteUser() async {
+  /*Future deleteUser() async {
     try {
       await auth.currentUser?.reload().then((value) {
         return auth.currentUser?.delete();
