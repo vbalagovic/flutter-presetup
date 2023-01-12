@@ -98,6 +98,14 @@ ___________
 - Anonymus login works by default when you enable it on firebase with this code
 - Social Login coming next
 
+#### Google social login
+
+Social login with google has been implemented as example. You need to add google login to your firebase auth and then run this script. It'll ask for a Google Reversed Id to update ios data per environment.
+
+```bash
+sh setup_google_login.sh
+```
+
 ___________
 
 ## Extracted widgets
