@@ -398,6 +398,9 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = R9776FTBUL;
 				ENABLE_BITCODE = NO;
+				FACEBOOK_APP_ID = "facebook-app-id-prod";
+				FACEBOOK_CLIENT_ID = "facebook-app-token-prod";
+				FACEBOOK_DISPLAY_NAME = "facebook-app-name-prod";
 				GOOGLE_REVERSED_CLIENT_ID = "google-reversed-client-id-prod";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -533,6 +536,9 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = R9776FTBUL;
 				ENABLE_BITCODE = NO;
+				FACEBOOK_APP_ID = "facebook-app-id-prod";
+				FACEBOOK_CLIENT_ID = "facebook-app-token-prod";
+				FACEBOOK_DISPLAY_NAME = "facebook-app-name-prod";
 				GOOGLE_REVERSED_CLIENT_ID = "google-reversed-client-id-prod";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -562,6 +568,9 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = R9776FTBUL;
 				ENABLE_BITCODE = NO;
+				FACEBOOK_APP_ID = "facebook-app-id-prod";
+				FACEBOOK_CLIENT_ID = "facebook-app-token-prod";
+				FACEBOOK_DISPLAY_NAME = "facebook-app-name-prod";
 				GOOGLE_REVERSED_CLIENT_ID = "google-reversed-client-id-prod";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -645,6 +654,9 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = R9776FTBUL;
 				ENABLE_BITCODE = NO;
+				FACEBOOK_APP_ID = "facebook-app-id-dev";
+				FACEBOOK_CLIENT_ID = "facebook-app-token-dev";
+				FACEBOOK_DISPLAY_NAME = "facebook-app-name-dev";
 				GOOGLE_REVERSED_CLIENT_ID = "com.googleusercontent.apps.1079294079644-u9tk0egh7gfam4jt5tnfladpc9npup8d";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -726,6 +738,9 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = R9776FTBUL;
 				ENABLE_BITCODE = NO;
+				FACEBOOK_APP_ID = "facebook-app-id-dev";
+				FACEBOOK_CLIENT_ID = "facebook-app-token-dev";
+				FACEBOOK_DISPLAY_NAME = "facebook-app-name-dev";
 				GOOGLE_REVERSED_CLIENT_ID = "com.googleusercontent.apps.1079294079644-u9tk0egh7gfam4jt5tnfladpc9npup8d";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -804,6 +819,9 @@
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = R9776FTBUL;
 				ENABLE_BITCODE = NO;
+				FACEBOOK_APP_ID = "facebook-app-id-dev";
+				FACEBOOK_CLIENT_ID = "facebook-app-token-dev";
+				FACEBOOK_DISPLAY_NAME = "facebook-app-name-dev";
 				GOOGLE_REVERSED_CLIENT_ID = "com.googleusercontent.apps.1079294079644-u9tk0egh7gfam4jt5tnfladpc9npup8d";
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

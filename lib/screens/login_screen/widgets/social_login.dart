@@ -61,9 +61,9 @@ class SocialLogin extends ConsumerWidget {
       return result;
     }
 
-    /* Future<AuthResultStatus> signInWithFacebook() async {
+    Future<AuthResultStatus> signInWithFacebook() async {
       log("fcb sign in");
-      final AuthResultStatus result = await AuthService().facebookSignIn();
+      final AuthResultStatus result = await AuthService(ref).facebookSignIn();
 
       if (result == AuthResultStatus.successful) {
         await redirectOnLogin();
@@ -71,7 +71,7 @@ class SocialLogin extends ConsumerWidget {
       handleSocialLogin(result);
 
       return result;
-    }*/
+    }
 
     Future<AuthResultStatus> signInWithApple() async {
       log("apple sign in");
@@ -99,6 +99,12 @@ class SocialLogin extends ConsumerWidget {
               title: "Google Login",
               onPressed: () async {
                 await signInWithGoogle();
+              },
+            ),
+            FpButton(
+              title: "Facebook Login",
+              onPressed: () async {
+                await signInWithFacebook();
               },
             ),
             if (Platform.isIOS) FpButton(

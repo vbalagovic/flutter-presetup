@@ -52,6 +52,7 @@ dependencies:
   google_sign_in: ^5.4.3
   sign_in_with_apple: ^4.3.0
   crypto: ^3.0.2
+  flutter_facebook_auth: ^5.0.7
 
 dev_dependencies:
   flutter_test:

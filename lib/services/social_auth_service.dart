@@ -4,6 +4,7 @@ import 'dart:math' as dm;
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:presetup/data/providers/auth_provider.dart';
@@ -48,7 +49,7 @@ class AuthService {
     }
   }
 
-  /* Future<AuthResultStatus> facebookSignIn() async {
+  Future<AuthResultStatus> facebookSignIn() async {
     log("facebook sign in -----");
     try {
       final LoginResult result = await FacebookAuth.instance.login();
@@ -59,7 +60,7 @@ class AuthService {
         final OAuthCredential credential =
             FacebookAuthProvider.credential(accessToken.token);
         log("facebook status $userData");
-        status = await signInWithCredential(credential);
+        status = await ref.read(signInProvider.notifier).signInWithCredential(credential);
       } else if (result.status == LoginStatus.cancelled) {
         return AuthResultStatus.cancelled;
       } else {
@@ -74,7 +75,7 @@ class AuthService {
       EasyLoading.dismiss();
       return AuthResultStatus.undefined;
     }
-  }*/
+  }
 
   /// Generates a cryptographically secure random nonce, to be included in a
   /// credential request.
