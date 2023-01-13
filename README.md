@@ -106,6 +106,14 @@ Social login with google has been implemented as example. You need to add google
 sh setup_google_login.sh
 ```
 
+#### Facebook social login
+
+Social login with facebook has been implemented as example. You need to add facebook login to your firebase auth and then run this script. It'll ask for a app id, token(secret) and app name. Package that was used is https://facebook.meedu.app/docs/5.x.x/intro but no implementation to code should be done. Just create facebook app for credentials.
+
+```bash
+sh setup_facebook_login.sh
+```
+
 #### Apple social login
 
 Apple social login for iOS should work when you setup your Firebase (enable apple signup) and add "Sign in with apple capabilities" on your apple developer account to this identifier. Update provision file or just open xcode and recheck automatic provisioning if it's not working.

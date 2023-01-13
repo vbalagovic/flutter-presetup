@@ -6,14 +6,16 @@ read projectName
 echo "Enter environment dev/prod (defaults to dev)"
 read projectEnv
 
-flutterfire configure --project=$projectName
-
 if [ -z "$projectEnv" ]
 then
     projectEnv="dev"
+    flutterfire configure --project=$projectName --ios-bundle-id="com.example.presetup.dev" --android-package-name="com.example.presetup.dev" --android-app-id="com.example.presetup.dev" --platforms="android,ios" --yes
+else
+    flutterfire configure --project=$projectName --platforms="android,ios" --yes
 fi
 
 if [ $projectEnv == "dev" ]; then
+    echo "Setup dev environment"
     rm './android/app/src/dev/google-services.json'
     mv './android/app/google-services.json' './android/app/src/dev/google-services.json'
 
@@ -27,6 +29,7 @@ if [ $projectEnv == "dev" ]; then
 fi
 
 if [ $projectEnv == "prod" ]; then
+    echo "Setup prod environment"
     rm './android/app/src/prod/google-services.json'
     mv './android/app/google-services.json' './android/app/src/prod/google-services.json'
 
@@ -38,3 +41,5 @@ if [ $projectEnv == "prod" ]; then
     mv './lib/firebase_options.dart' './lib/firebase_options_prod.dart'
     git restore ios/Runner.xcodeproj/project.pbxproj
 fi
+
+echo "All done"
