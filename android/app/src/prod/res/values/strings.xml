@@ -3,4 +3,5 @@
    <string name="app_name">FlutterPresetup</string>
    <string name="facebook_app_id">facebook-app-id-prod</string>
    <string name="facebook_client_token">facebook-app-token-prod</string>
+   <string name="admob_id">admob-android-id-prod</string>
 </resources>

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:presetup/data/providers/auth_provider.dart';
 import 'package:presetup/data/providers/theme_provider.dart';
 import 'package:presetup/utilities/router.dart';
@@ -11,6 +12,7 @@ import 'package:presetup/utilities/theme.dart';
 
 void mainCommon(options) async {
   WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(
     options: options,

@@ -25,9 +25,9 @@ grep --exclude=./rename.sh -r -l "presetup" . | sort | uniq | xargs perl -e "s/p
 
 grep --exclude=./rename.sh -r -l "FlutterPresetup" . | sort | uniq | xargs perl -e "s/FlutterPresetup/$appName/" -pi
 
-grep --exclude=./rename.sh -r -l "com.example.presetup" . | sort | uniq | xargs perl -e "s/com.example.presetup/$bundleId/" -pi
-
 grep --exclude=./rename.sh -r -l "com.example.presetup.dev" . | sort | uniq | xargs perl -e "s/com.example.presetup.dev/$bundleId.dev/" -pi
+
+grep --exclude=./rename.sh -r -l "com.example.presetup" . | sort | uniq | xargs perl -e "s/com.example.presetup/$bundleId/" -pi
 
 find . -depth -name "presetup.iml" -exec sh -c 'f="{}"; mv -- "$f" "$packageName.iml"' \;
 find . -depth -name "presetup_android.iml" -exec sh -c 'f="{}"; mv -- "$f" "$packageName_android.iml"' \;

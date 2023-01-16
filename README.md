@@ -4,6 +4,14 @@ This is a small project that saves me time when I need to start new project from
 
 Related article: https://medium.com/itnext/flutter-new-app-setup-with-flavors-in-one-go-331471b127e3
 
+## Screenshots
+
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/30495155/212721492-ef0bf13f-f497-4ac1-9f68-7fff40a87932.png" width="250" />
+  <img src="https://user-images.githubusercontent.com/30495155/212721593-34602878-e152-4eea-b7ef-1484fe328dca.png" width="250" />
+  <img src="https://user-images.githubusercontent.com/30495155/212721626-b327b8c4-c0e6-4913-a6c7-a4020d054261.png" width="250" />
+</p>
+
 ## Dependencies & versions
 
 Current Flutter version 3.3.10
@@ -84,10 +92,6 @@ sh setup_firebase.sh
 
 that will trigger command below and put the files where they are needed for this setup
 
-```bash
-flutterfire configure --project=<project-name>
-```
-
 This automatically registers your per-platform apps with Firebase and adds a lib/firebase_options.dart configuration file to your Flutter project.
 
 ___________
@@ -119,6 +123,36 @@ sh setup_facebook_login.sh
 #### Apple social login
 
 Apple social login for iOS should work when you setup your Firebase (enable apple signup) and add "Sign in with apple capabilities" on your apple developer account to this identifier. Update provision file or just open xcode and recheck automatic provisioning if it's not working.
+
+___________
+
+## Google Ads
+
+### Setup admob
+
+- First you need to create admob account
+- Create iOS and android application and get ad mob id in admob app settings
+- Run script to add this ad mob id-s everywhere where needed
+
+```bash
+sh setup_admob_credentials.sh
+```
+
+After running this script all 3 types of ads should be working.
+
+There are three examples of apps so you can create them and update `ad_helper.dart`with correct id per type of app. Current values are test ids so you can use them for test purposes.
+
+#### Banner Ads
+
+Create banner add and update `ad_helper.dart` file `bannerAdUnitId` variable, link to banner ad if you have some issues [Banner ad](https://developers.google.com/admob/flutter/banner/get-started)
+
+#### Rewarded Interstitial As
+
+Create banner add and update `ad_helper.dart` file `rewardedInterstitialAdUnitId` variable, link to reward int. ad if you have some issues [Rewarded Interstitial ad](https://developers.google.com/admob/flutter/rewarded-interstitial)
+
+#### Native Ads
+
+There is a example of native list ad. Design can be changed in `list_tile_native_ad.xml` file for android & `ListTileNativeAdView.xib` for iOS. For any updates check the article about native ads in flutter. [Native Ads](https://medium.com/itnext/flutter-native-ads-92d802fbd927)
 
 ___________
 

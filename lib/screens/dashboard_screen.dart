@@ -6,6 +6,9 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:presetup/data/providers/auth_provider.dart';
 import 'package:presetup/data/providers/theme_provider.dart';
 import 'package:presetup/flavor_banner.dart';
+import 'package:presetup/widgets/ads/banner_ad_block.dart';
+import 'package:presetup/widgets/ads/native_ad_block.dart';
+import 'package:presetup/widgets/ads/reward_ad_block.dart';
 
 class DashboardScreen extends ConsumerStatefulWidget {
   const DashboardScreen({super.key});
@@ -53,32 +56,44 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
             },
           ),
         ]),
-        body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("App Name: $appName"),
-            Text("packageName: $packageName"),
-            Text("version: $version"),
-            Text("buildNumber: $buildNumber"),
-            SizedBox(
-              height: 50,
-            ),
-            ListTile(
-              title: const Text("Dark Theme"),
-              trailing: Switch(
-                  value: Theme.of(context).brightness == Brightness.dark,
-                  onChanged: (value) async {
-                    if (Theme.of(context).brightness == Brightness.light) {
-                      ref.read(themeProvider.notifier).setThemeMode(ThemeMode.dark);
-                    } else {
-                      ref.read(themeProvider.notifier).setThemeMode(ThemeMode.light);
-                    }
-                    //await EvaTheme.initialize();
-                  }),
-            ),
-          ],
-        )), // This trailing comma makes auto-formatting nicer for build methods.
+        body: Padding(
+          padding: const EdgeInsets.all(30),
+          child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text("App Name: $appName"),
+              Text("packageName: $packageName"),
+              Text("version: $version"),
+              Text("buildNumber: $buildNumber"),
+              Divider(),
+              Text("Banner Ad", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
+              Padding(padding: EdgeInsets.all(20), child: BannerAdBlock()),
+              Text("Native Ad", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
+              Padding(padding: EdgeInsets.all(20), child: NativeAdBlock()),
+              Text("Rewarded Inter. Ad", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
+              Padding(padding: EdgeInsets.all(20), child: RewardAdBlock()),
+              Divider(),
+              SizedBox(
+                height: 50,
+              ),
+              ListTile(
+                title: const Text("Dark Theme"),
+                trailing: Switch(
+                    value: Theme.of(context).brightness == Brightness.dark,
+                    onChanged: (value) async {
+                      if (Theme.of(context).brightness == Brightness.light) {
+                        ref.read(themeProvider.notifier).setThemeMode(ThemeMode.dark);
+                      } else {
+                        ref.read(themeProvider.notifier).setThemeMode(ThemeMode.light);
+                      }
+                      //await EvaTheme.initialize();
+                    }),
+              ),
+            ],
+          )),
+        ), // This trailing comma makes auto-formatting nicer for build methods.
       ),
     );
   }

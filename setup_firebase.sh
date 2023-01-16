@@ -1,6 +1,6 @@
 echo "Setting up firebase"
 
-echo "Enter firebase project name"
+echo "Enter firebase project id"
 read projectName
 
 echo "Enter environment dev/prod (defaults to dev)"
