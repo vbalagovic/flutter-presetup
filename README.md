@@ -4,6 +4,8 @@ This is a small project that saves me time when I need to start new project from
 
 Related article: https://medium.com/itnext/flutter-new-app-setup-with-flavors-in-one-go-331471b127e3
 
+NOTE: dev & prod scheme must be added manually in xcode (check the article above if explanation is needed)
+
 ## Screenshots
 
 <p float="left">
@@ -28,7 +30,7 @@ Dependencies used:
 - Go router
 - Riverpod
 - Flutter launcher icons
-- flavors
+- flavors 
 
 ### Step 1) Update project name
 
