@@ -29,7 +29,9 @@ grep --exclude=./rename.sh -r -l "com.example.presetup.dev" . | sort | uniq | xa
 
 grep --exclude=./rename.sh -r -l "com.example.presetup" . | sort | uniq | xargs perl -e "s/com.example.presetup/$bundleId/" -pi
 
-grep --exclude=./rename.sh -r -l "com.example.$bundleId" . | sort | uniq | xargs perl -e "s/com.example.$bundleId/$bundleId.dev/" -pi
+grep --exclude=./rename.sh -r -l "com.example.$packageName.dev" . | sort | uniq | xargs perl -e "s/com.example.$packageName.dev/$bundleId.dev/" -pi
+
+grep --exclude=./rename.sh -r -l "com.example.$packageName" . | sort | uniq | xargs perl -e "s/com.example.$packageName/$bundleId/" -pi
 
 
 find . -depth -name "presetup.iml" -exec sh -c 'f="{}"; mv -- "$f" "$packageName.iml"' \;
@@ -40,7 +42,13 @@ for i in $(find . -depth -name "MainActivity.kt");
 do
     pth=${i%/*}
 done
-find . -depth -name "ListTileNativeAdFactory.kt" -exec sh -c 'f="{}"; mv -- "$f" "$pth/ListTileNativeAdFactory.kt"' \;
+npth=""
+for j in $(find . -depth -name "ListTileNativeAdFactory.kt");
+do
+    npth=$j
+done
+
+mv $npth $pth
 
 fvm flutter clean
 
