@@ -16,7 +16,7 @@ NOTE: dev & prod scheme must be added manually in xcode (check the article above
 
 ## Dependencies & versions
 
-Current Flutter version 3.3.10
+Current Flutter version 3.7.1
 
 Install all dependecies:
 
@@ -30,7 +30,7 @@ Dependencies used:
 - Go router
 - Riverpod
 - Flutter launcher icons
-- flavors 
+- flavors
 
 ### Step 1) Update project name
 
