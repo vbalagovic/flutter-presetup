@@ -16,9 +16,9 @@ echo ==========    RENAMING    ==========
 echo ====================================
 
 fvm flutter pub run change_app_package_name:main $bundleId
-fvm flutter pub global activate rename
-fvm flutter pub global run rename --bundleId $bundleId
-fvm flutter pub global run rename --appname $appName
+#fvm flutter pub global activate rename
+#fvm flutter pub global run rename --bundleId $bundleId
+#fvm flutter pub global run rename --appname $appName
 
 # You can always use search an replace in text editor if this is not working on your machine
 grep --exclude=./rename.sh -r -l "presetup" . | sort | uniq | xargs perl -e "s/presetup/$packageName/" -pi
@@ -29,8 +29,18 @@ grep --exclude=./rename.sh -r -l "com.example.presetup.dev" . | sort | uniq | xa
 
 grep --exclude=./rename.sh -r -l "com.example.presetup" . | sort | uniq | xargs perl -e "s/com.example.presetup/$bundleId/" -pi
 
+grep --exclude=./rename.sh -r -l "com.example.$bundleId" . | sort | uniq | xargs perl -e "s/com.example.$bundleId/$bundleId.dev/" -pi
+
+
 find . -depth -name "presetup.iml" -exec sh -c 'f="{}"; mv -- "$f" "$packageName.iml"' \;
 find . -depth -name "presetup_android.iml" -exec sh -c 'f="{}"; mv -- "$f" "$packageName_android.iml"' \;
+
+pth=""
+for i in $(find . -depth -name "MainActivity.kt");
+do
+    pth=${i%/*}
+done
+find . -depth -name "ListTileNativeAdFactory.kt" -exec sh -c 'f="{}"; mv -- "$f" "$pth/ListTileNativeAdFactory.kt"' \;
 
 fvm flutter clean
 
