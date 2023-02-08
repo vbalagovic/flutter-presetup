@@ -14,6 +14,23 @@ NOTE: dev & prod scheme must be added manually in xcode (check the article above
   <img src="https://user-images.githubusercontent.com/30495155/212721626-b327b8c4-c0e6-4913-a6c7-a4020d054261.png" width="250" />
 </p>
 
+### Task list [project from scratch with assembled features listed below]
+
+- [x] Flavors with different icons
+- [x] Renaming
+- [x] Firebase setup
+- [x] Auth setup with firebase
+- [x] Social logins (google, apple, facebook)
+- [x] Routing with auth session listener
+- [x] Google Ads (native, reward int. banner)
+- [ ] Select features you need on setup (now you need to finish all tasks to make app up and running, even admob key)
+- [ ] Write better documentation
+- [ ] Push notifications
+- [ ] Dynamic links
+- [ ] Fastlane deployment to App distribution and both Stores
+- [ ] Create widgetbook
+- [ ] Pack everything in GUI
+
 ## Dependencies & versions
 
 Current Flutter version 3.7.1
