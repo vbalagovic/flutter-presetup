@@ -1,5 +1,8 @@
 # Flutter Presetup project
 
+## More structured documentation
+[Flutter Presetup Gitbook](https://flutterapid.gitbook.io/flutter-presetup/)
+
 This is a small project that saves me time when I need to start new project from scratch including flavors and firebase. It's kinda suited to my needs but it may help someone. Currently it's focused on iOS and Android.
 
 Related article: https://medium.com/itnext/flutter-new-app-setup-with-flavors-in-one-go-331471b127e3
