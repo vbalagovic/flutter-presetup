@@ -1,0 +1,2 @@
+json_key_file(ENV["ANDROID_FIREBASE_APP_DISTRIBUTION_CREDENTIALS_FILE_PATH"]) # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name(ENV['BUNDLE_IDENTIFIER']) # e.g. com.krausefx.app

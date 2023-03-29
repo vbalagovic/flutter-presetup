@@ -1,0 +1,93 @@
+fastlane_require 'dotenv'
+
+default_platform(:android)
+
+before_all do |lane|
+  Dotenv.overload '../../.env'
+  environment = lane_context[SharedValues::ENVIRONMENT]
+  unless environment.nil?
+      puts "Load .env file of #{environment}"
+      Dotenv.overload '../../.env.' + environment
+  end
+end
+
+platform :android do
+
+  # Have an easy way to get the root of the project
+  def root_path
+    Dir.pwd.sub(/.*\Kfastlane/, '').sub(/.*\Kandroid/, '').sub(/.*\Kios/, '').sub(/.*\K\/\//, '')
+  end
+
+  # Have an easy way to run flutter tasks on the root of the project
+  lane :sh_on_root do |options|
+    command = options[:command]
+    sh("cd #{root_path} && #{command}")
+  end
+
+
+  private_lane :build_apk do
+    env = ENV['SCHEME']
+
+    params = env == "dev" ? '--flavor dev -t lib/main_dev.dart ' : '--flavor prod -t lib/main_prod.dart '
+
+    desc "Building #{env} Android APK"
+    sh_on_root(command: "fvm install #{ENV['FLUTTER_VERSION']} && fvm use #{ENV['FLUTTER_VERSION']} && fvm flutter build apk --split-per-abi #{params}")
+  end
+
+  lane :deploy_staging do
+    build_apk
+
+    firebase_app_distribution(
+      app: ENV['ANDROID_FIREBASE_APP_DISTRIBUTION_APP'],
+      testers: ENV['ANDROID_FIREBASE_APP_DISTRIBUTION_TESTERS'],
+      android_artifact_type: "APK",
+      android_artifact_path: "#{root_path}/build/app/outputs/flutter-apk/app-armeabi-v7a-#{ENV['SCHEME']}-release.apk",
+      release_notes: File.read("#{root_path}/changelog.txt"),
+      service_credentials_file: ENV['FIREBASE_APP_DISTRIBUTION_CREDENTIALS_FILE_PATH'],
+    )
+  end
+
+  lane :build do
+    # Reuse parent fastfile tasks
+
+    sh_on_root(command: "fvm use #{ENV['FLUTTER_VERSION']} && fvm flutter build appbundle --flavor prod -t lib/main_prod.dart ")
+  end
+
+  lane :deploy_beta do
+    path = '../app/build.gradle'
+    re = /versionCode\s+(\d+)/
+    vname = /versionName\s+"(\d+)\.(\d+)\.(\d+)"/
+    s = File.read(path)
+    version_name = ""
+    version_code = 1
+
+    #s.gsub(re, (versionCode + 1).to_s)
+    s.scan(re) { |match|
+      vr = "versionCode #{match[0].to_i}"
+      version_code = match[0].to_i
+    }
+
+    s.scan(vname) { |match|
+      versionName = match
+
+      vr = "versionName \"#{match[0].to_i}.#{match[1].to_i}.#{match[2].to_i}\""
+      version = match[0] + '.' + match[1] + '.' + match[2];
+      version_name = version.to_s
+    }
+
+    build
+
+    upload_to_play_store(
+      track: "internal",
+      version_code: version_code,
+      version_name: version_name.to_s,
+      skip_upload_changelogs: true,
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      skip_upload_apk: true,
+      aab: "#{root_path}/build/app/outputs/bundle/prodRelease/app-prod-release.aab"
+    ) # Uploads the APK built in the gradle step above and releases it to all production users
+  end
+
+end
