@@ -28,7 +28,7 @@ NOTE: dev & prod scheme must be added manually in xcode (check the article above
 - [x] Google Ads (native, reward int. banner)
 - [ ] Select features you need on setup (now you need to finish all tasks to make app up and running, even admob key)
 - [ ] Write better documentation
-- [ ] Push notifications
+- [x] Push notifications
 - [ ] Dynamic links
 - [x] Fastlane deployment to App distribution and both Stores
 - [ ] Create widgetbook
