@@ -13,6 +13,6 @@
 * [ ] &#x20;Write better documentation
 * [ ] &#x20;Push notifications
 * [ ] &#x20;Dynamic links
-* [ ] &#x20;Fastlane deployment to App distribution and both Stores
+* [x] &#x20;Fastlane deployment to App distribution and both Stores
 * [ ] &#x20;Create widget book
 * [ ] &#x20;Pack everything in GUI
