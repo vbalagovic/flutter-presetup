@@ -21,13 +21,14 @@ fvm flutter pub run change_app_package_name:main $bundleId
 #fvm flutter pub global run rename --appname $appName
 
 # You can always use search an replace in text editor if this is not working on your machine
-grep --exclude=./rename.sh -r -l "presetup" . | sort | uniq | xargs perl -e "s/presetup/$packageName/" -pi
 
 grep --exclude=./rename.sh -r -l "FlutterPresetup" . | sort | uniq | xargs perl -e "s/FlutterPresetup/$appName/" -pi
 
 grep --exclude=./rename.sh -r -l "com.example.presetup.dev" . | sort | uniq | xargs perl -e "s/com.example.presetup.dev/$bundleId.dev/" -pi
 
 grep --exclude=./rename.sh -r -l "com.example.presetup" . | sort | uniq | xargs perl -e "s/com.example.presetup/$bundleId/" -pi
+
+grep --exclude=./rename.sh -r -l "presetup" . | sort | uniq | xargs perl -e "s/presetup/$packageName/" -pi
 
 grep --exclude=./rename.sh -r -l "com.example.$packageName.dev" . | sort | uniq | xargs perl -e "s/com.example.$packageName.dev/$bundleId.dev/" -pi
 

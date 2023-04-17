@@ -11,7 +11,7 @@
 * [x] &#x20;Google Ads (native, reward int. banner)
 * [ ] &#x20;Select features you need on setup (now you need to finish all tasks to make app up and running, even the admob key)
 * [ ] &#x20;Write better documentation
-* [ ] &#x20;Push notifications
+* [x] &#x20;Push notifications
 * [ ] &#x20;Dynamic links
 * [x] &#x20;Fastlane deployment to App distribution and both Stores
 * [ ] &#x20;Create widget book
