@@ -3,5 +3,5 @@
    <string name="app_name">[dev] FlutterPresetup</string>
    <string name="facebook_app_id">facebook-app-id-dev</string>
    <string name="facebook_client_token">facebook-app-token-dev</string>
-   <string name="admob_id">ca-app-pub-1195101739738256~4898485762</string>
+   <string name="admob_id">admob-android-id-dev</string>
 </resources>

@@ -1,11 +1,12 @@
 # Flutter Presetup project
 
 ## More structured documentation
+
 [Flutter Presetup Gitbook](https://flutterapid.gitbook.io/flutter-presetup/)
 
 This is a small project that saves me time when I need to start new project from scratch including flavors and firebase. It's kinda suited to my needs but it may help someone. Currently it's focused on iOS and Android.
 
-Related article: https://medium.com/itnext/flutter-new-app-setup-with-flavors-in-one-go-331471b127e3
+Related article: <https://medium.com/itnext/flutter-new-app-setup-with-flavors-in-one-go-331471b127e3>
 
 NOTE: dev & prod scheme must be added manually in xcode (check the article above if explanation is needed)
 
@@ -136,7 +137,7 @@ sh setup_google_login.sh
 
 #### Facebook social login
 
-Social login with facebook has been implemented as example. You need to add facebook login to your firebase auth and then run this script. It'll ask for a app id, token(secret) and app name. Package that was used is https://facebook.meedu.app/docs/5.x.x/intro but no implementation to code should be done. Just create facebook app for credentials.
+Social login with facebook has been implemented as example. You need to add facebook login to your firebase auth and then run this script. It'll ask for a app id, token(secret) and app name. Package that was used is <https://facebook.meedu.app/docs/5.x.x/intro> but no implementation to code should be done. Just create facebook app for credentials.
 
 ```bash
 sh setup_facebook_login.sh
@@ -178,6 +179,16 @@ There is a example of native list ad. Design can be changed in `list_tile_native
 
 ___________
 
+## Dynamic links
+
+Dynamic links should all be setup, run the following command and enter dev or prod dynamic link. You can handle dynamic links on `splash_screen.dart` in `initSystem()` function.
+
+```bash
+sh setup_dynamic_links.sh
+```
+
+___________
+
 ## Deployment (via Fastlane)
 
 For more detailed articles (slightly different .env organization of files only) you can check [App distribution Deploy](https://medium.com/itnext/flutter-fastlane-deployment-to-the-firebase-app-distribution-easy-way-d5ca2fbdcdf9) & [Store Deploy](https://medium.com/itnext/flutter-fastlane-deployment-to-the-google-play-app-store-easy-way-baa1f491cc51)
@@ -206,7 +217,6 @@ Update chengelog.txt file in root folder for release notes & deploy dev app to F
   sh deploy_dev.sh
   ```
 
-
 ### Google Play Store (example will be for prod environment)
 
 Populate `.env.production` in root folder with data and keys, for that we need a JSON key file that will give us access to the play store which is explained [official docs](https://docs.fastlane.tools/actions/supply/#setup) I will add a screenshot for a sake of speed:
@@ -216,7 +226,6 @@ Populate `.env.production` in root folder with data and keys, for that we need a
 </p>
 
 Populate `ANDROID_FIREBASE_APP_DISTRIBUTION_CREDENTIALS_FILE_PATH` (or for the path store the file to root directory and name it `google-creds-prod.json`)
-
 
 ### Apple Store Test Flight (example will be for prod environment)
 
