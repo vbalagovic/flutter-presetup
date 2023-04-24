@@ -22,14 +22,13 @@ void mainCommon(options) async {
   );
   FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   final pushNotifService = PushNotificationsService();
-  await pushNotifService.registerNotification();
-  await pushNotifService.initiateToken();
+
   if (Platform.isIOS) {
     Future.delayed(const Duration(milliseconds: 500), () async {
-      await pushNotifService.setupInteractedMessage();
+      await pushNotifService.registerNotification();
     });
   } else {
-    await pushNotifService.setupInteractedMessage();
+    await pushNotifService.registerNotification();
   }
 
   //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
