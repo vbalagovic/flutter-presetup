@@ -15,7 +15,6 @@ echo ====================================
 echo ==========    RENAMING    ==========
 echo ====================================
 
-fvm flutter pub run change_app_package_name:main $bundleId
 #fvm flutter pub global activate rename
 #fvm flutter pub global run rename --bundleId $bundleId
 #fvm flutter pub global run rename --appname $appName
@@ -34,6 +33,7 @@ grep --exclude=./rename.sh -r -l "com.example.$packageName.dev" . | sort | uniq 
 
 grep --exclude=./rename.sh -r -l "com.example.$packageName" . | sort | uniq | xargs perl -e "s/com.example.$packageName/$bundleId/" -pi
 
+fvm flutter pub run change_app_package_name:main $bundleId
 
 find . -depth -name "presetup.iml" -exec sh -c 'f="{}"; mv -- "$f" "$packageName.iml"' \;
 find . -depth -name "presetup_android.iml" -exec sh -c 'f="{}"; mv -- "$f" "$packageName_android.iml"' \;
