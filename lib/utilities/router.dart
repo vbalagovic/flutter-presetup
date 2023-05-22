@@ -19,11 +19,11 @@ final routerProvider = Provider<GoRouter>((ref) {
     redirect: (context, state) {
       final isLoggedIn = ref.watch(authRepositoryProvider).currentUser != null;
       if (isLoggedIn) {
-        if (state.subloc.startsWith('/login')) {
+        if (state.location.startsWith('/login')) {
           return '/home/dashboard';
         }
       } else {
-        if (state.subloc.startsWith('/home')) {
+        if (state.location.startsWith('/home')) {
           return '/login';
         }
       }
