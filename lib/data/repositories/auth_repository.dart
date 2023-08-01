@@ -14,10 +14,12 @@ class AuthRepository {
   }
 
   // Method For Social logins
-  Future<AuthResultStatus> signInWithCredential(OAuthCredential credential) async {
+  Future<AuthResultStatus> signInWithCredential(
+      OAuthCredential credential) async {
     AuthResultStatus status;
     try {
-      UserCredential userCredential = await _auth.signInWithCredential(credential);
+      UserCredential userCredential =
+          await _auth.signInWithCredential(credential);
       if (userCredential.user != null) {
         status = AuthResultStatus.successful;
       } else {

@@ -1,10 +1,6 @@
-import 'dart:developer';
-
-import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presetup/data/providers/auth_provider.dart';
-import 'package:presetup/data/repositories/auth_repository.dart';
 import 'package:presetup/screens/dashboard_screen.dart';
 import 'package:presetup/screens/login_screen/login_screen.dart';
 import 'package:presetup/screens/splash_screen.dart';
@@ -14,16 +10,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // GoRouter configuration
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    refreshListenable: RouterRefresh(ref.watch(authRepositoryProvider).authStateChanges()),
+    refreshListenable:
+        RouterRefresh(ref.watch(authRepositoryProvider).authStateChanges()),
     debugLogDiagnostics: true,
     redirect: (context, state) {
       final isLoggedIn = ref.watch(authRepositoryProvider).currentUser != null;
       if (isLoggedIn) {
-        if (state.subloc.startsWith('/login')) {
+        if (state.uri.toString().startsWith('/login')) {
           return '/home/dashboard';
         }
       } else {
-        if (state.subloc.startsWith('/home')) {
+        if (state.uri.toString().startsWith('/home')) {
           return '/login';
         }
       }
@@ -43,7 +40,8 @@ final routerProvider = Provider<GoRouter>((ref) {
         pageBuilder: (context, state) => CustomTransitionPage<void>(
           key: state.pageKey,
           child: const DashboardScreen(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(opacity: animation, child: child),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              FadeTransition(opacity: animation, child: child),
         ),
       ),
     ],

@@ -19,7 +19,8 @@ class ThemeState with _$ThemeState {
 }
 
 // Creating state notifier provider
-final themeProvider = StateNotifierProvider<ThemeNotifier, ThemeState>((ref) => ThemeNotifier());
+final themeProvider =
+    StateNotifierProvider<ThemeNotifier, ThemeState>((ref) => ThemeNotifier());
 
 // Creating Notifier
 class ThemeNotifier extends StateNotifier<ThemeState> {

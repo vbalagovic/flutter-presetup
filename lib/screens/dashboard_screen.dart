@@ -14,7 +14,8 @@ class DashboardScreen extends ConsumerStatefulWidget {
   const DashboardScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _DashboardScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _DashboardScreenState();
 }
 
 class _DashboardScreenState extends ConsumerState<DashboardScreen> {
@@ -48,9 +49,9 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   Widget build(BuildContext context) {
     return FlavorBanner(
       child: Scaffold(
-        appBar: AppBar(title: Text("Dashboard").tr(), actions: [
+        appBar: AppBar(title: const Text("Dashboard").tr(), actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () {
               ref.read(signInProvider.notifier).signOut();
             },
@@ -60,22 +61,34 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
           padding: const EdgeInsets.all(30),
           child: Center(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text("App Name: $appName"),
               Text("packageName: $packageName"),
               Text("version: $version"),
               Text("buildNumber: $buildNumber"),
-              Divider(),
-              Text("Banner Ad", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
-              Padding(padding: EdgeInsets.all(20), child: BannerAdBlock()),
-              Text("Native Ad", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
-              Padding(padding: EdgeInsets.all(20), child: NativeAdBlock()),
-              Text("Rewarded Inter. Ad", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
-              Padding(padding: EdgeInsets.all(20), child: RewardAdBlock()),
-              Divider(),
-              SizedBox(
+              const Divider(),
+              const Text(
+                "Banner Ad",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+              ),
+              const Padding(
+                  padding: EdgeInsets.all(20), child: BannerAdBlock()),
+              const Text(
+                "Native Ad",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+              ),
+              const Padding(
+                  padding: EdgeInsets.all(20), child: NativeAdBlock()),
+              const Text(
+                "Rewarded Inter. Ad",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+              ),
+              const Padding(
+                  padding: EdgeInsets.all(20), child: RewardAdBlock()),
+              const Divider(),
+              const SizedBox(
                 height: 50,
               ),
               ListTile(
@@ -84,9 +97,13 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                     value: Theme.of(context).brightness == Brightness.dark,
                     onChanged: (value) async {
                       if (Theme.of(context).brightness == Brightness.light) {
-                        ref.read(themeProvider.notifier).setThemeMode(ThemeMode.dark);
+                        ref
+                            .read(themeProvider.notifier)
+                            .setThemeMode(ThemeMode.dark);
                       } else {
-                        ref.read(themeProvider.notifier).setThemeMode(ThemeMode.light);
+                        ref
+                            .read(themeProvider.notifier)
+                            .setThemeMode(ThemeMode.light);
                       }
                       //await EvaTheme.initialize();
                     }),

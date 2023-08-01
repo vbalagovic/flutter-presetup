@@ -35,9 +35,14 @@ void mainCommon(options) async {
   final container = ProviderContainer();
 
   await container.read(authStateChangesProvider.future);
-  runApp(EasyLocalization(supportedLocales: const [
-    Locale('en'),
-  ], path: 'assets/translations', fallbackLocale: const Locale('en'), child: UncontrolledProviderScope(container: container, child: MyApp())));
+  runApp(EasyLocalization(
+      supportedLocales: const [
+        Locale('en'),
+      ],
+      path: 'assets/translations',
+      fallbackLocale: const Locale('en'),
+      child: UncontrolledProviderScope(
+          container: container, child: const MyApp())));
 }
 
 void configLoading() {}

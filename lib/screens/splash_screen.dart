@@ -21,22 +21,22 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
   initSystem() async {
     FirebaseDynamicLinks dynamicLinks = FirebaseDynamicLinks.instance;
-      // Get any initial links
-      PendingDynamicLinkData? initialLink = await dynamicLinks.getInitialLink();
+    // Get any initial links
+    PendingDynamicLinkData? initialLink = await dynamicLinks.getInitialLink();
 
-      if (initialLink != null) {
-        inspect(initialLink);
-        // handle redirect route if needed
-      }
+    if (initialLink != null) {
+      inspect(initialLink);
+      // handle redirect route if needed
+    }
 
-      dynamicLinks.onLink.listen((dynamicLinkData) async {
-        // handle redirect route if needed
-        inspect(dynamicLinkData);
-      }).onError((error) {
-        // Handle errors
-      });
+    dynamicLinks.onLink.listen((dynamicLinkData) async {
+      // handle redirect route if needed
+      inspect(dynamicLinkData);
+    }).onError((error) {
+      // Handle errors
+    });
 
-      Future.delayed(const Duration(seconds: 1)).then((value) async {
+    Future.delayed(const Duration(seconds: 1)).then((value) async {
       ref.read(routerProvider).go("/login");
     });
   }
@@ -45,9 +45,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          child: Text("splash Screen")
-        ),
+        child: Container(child: const Text("splash Screen")),
       ),
     );
   }

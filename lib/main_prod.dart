@@ -8,13 +8,12 @@ void main() {
     env: "prod",
     name: "FlutterPresetup",
     values: FlavorValues(
-      bundleID: 'com.example.presetup',
-      appID: '',
-      baseUrl: '',
-      apiUrl: '',
-      sentryUrl: '',
-      dynamicLinkUrl: ''
-    ),
+        bundleID: 'com.example.presetup',
+        appID: '',
+        baseUrl: '',
+        apiUrl: '',
+        sentryUrl: '',
+        dynamicLinkUrl: ''),
   );
 
   mainCommon(DefaultFirebaseOptions.currentPlatform);
