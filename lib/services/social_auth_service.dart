@@ -39,7 +39,9 @@ class AuthService {
         idToken: googleAuth.idToken,
       );
 
-      status = await ref.read(signInProvider.notifier).signInWithCredential(credential);
+      status = await ref
+          .read(signInProvider.notifier)
+          .signInWithCredential(credential);
 
       return status;
     } catch (error) {
@@ -60,7 +62,9 @@ class AuthService {
         final OAuthCredential credential =
             FacebookAuthProvider.credential(accessToken.token);
         log("facebook status $userData");
-        status = await ref.read(signInProvider.notifier).signInWithCredential(credential);
+        status = await ref
+            .read(signInProvider.notifier)
+            .signInWithCredential(credential);
       } else if (result.status == LoginStatus.cancelled) {
         return AuthResultStatus.cancelled;
       } else {
@@ -110,7 +114,9 @@ class AuthService {
       EasyLoading.show();
       final credential = OAuthProvider("apple.com")
           .credential(idToken: appleResult.identityToken, rawNonce: rawNonce);
-      status = await ref.read(signInProvider.notifier).signInWithCredential(credential);
+      status = await ref
+          .read(signInProvider.notifier)
+          .signInWithCredential(credential);
 
       return status;
     } on SignInWithAppleAuthorizationException catch (error) {

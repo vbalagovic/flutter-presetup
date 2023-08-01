@@ -19,10 +19,12 @@ class FpButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
           )),
-          padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(vertical: 12, horizontal: 16)),
+          padding: MaterialStateProperty.all<EdgeInsets>(
+              const EdgeInsets.symmetric(vertical: 12, horizontal: 16)),
           backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
             if (states.contains(MaterialState.disabled)) {
               return FpTheme.of(context).primaryColor.withOpacity(0.7);
@@ -46,7 +48,10 @@ class FpButton extends StatelessWidget {
             const SizedBox(
               width: 8,
             ),
-          Text(title, style: FpTheme.of(context).bodyText1.copyWith(color: FpTheme.of(context).primaryBtnText))
+          Text(title,
+              style: FpTheme.of(context)
+                  .bodyText1
+                  .copyWith(color: FpTheme.of(context).primaryBtnText))
         ]));
   }
 }

@@ -48,11 +48,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             FpButton(
               key: anonymousButtonKey,
               title: tr("Skip Login"),
-              onPressed: state.isLoading ? null : () => ref.read(signInProvider.notifier).signInAnonymously(),
+              onPressed: state.isLoading
+                  ? null
+                  : () => ref.read(signInProvider.notifier).signInAnonymously(),
               isLoading: state.isLoading,
             ),
-
-            SocialLogin()
+            const SocialLogin()
           ],
         )), // This trailing comma makes auto-formatting nicer for build methods.
       ),

@@ -17,7 +17,6 @@ class PushNotificationsService {
     //await Firebase.initializeApp();
     // Instantiate Firebase Messaging
 
-
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
     await initiateToken();
@@ -56,8 +55,7 @@ class PushNotificationsService {
     log("setup interacted message");
     // Get any messages which caused the application to open from
     // a terminated state.
-    RemoteMessage? initialMessage =
-        await messaging.getInitialMessage();
+    RemoteMessage? initialMessage = await messaging.getInitialMessage();
 
     // If the message also contains a data property with a "type" of "chat",
     // navigate to a chat screen
@@ -91,7 +89,6 @@ class PushNotificationsService {
   }
 
   Future<bool> saveTokenToDatabase(token) async {
-
     //return await UserService().updateFCMToken(token);
     return true;
   }

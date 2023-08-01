@@ -39,9 +39,7 @@ class _RewardAdBlockState extends ConsumerState<RewardAdBlock> {
           onAdLoaded: (RewardedInterstitialAd ad) {
             // Keep a reference to the ad so you can show it later.
             _rewardedInterstitialAd = ad;
-            setState(() {
-
-            });
+            setState(() {});
           },
           onAdFailedToLoad: (LoadAdError error) {},
         ));
@@ -49,7 +47,8 @@ class _RewardAdBlockState extends ConsumerState<RewardAdBlock> {
 
   void showAd() {
     if (_rewardedInterstitialAd != null) {
-      _rewardedInterstitialAd?.show(onUserEarnedReward: (AdWithoutView ad, RewardItem rewardItem) {
+      _rewardedInterstitialAd?.show(
+          onUserEarnedReward: (AdWithoutView ad, RewardItem rewardItem) {
         log("reward item ---- $rewardItem");
         log("reward item amount ---- ${rewardItem.amount}");
       });
@@ -65,6 +64,8 @@ class _RewardAdBlockState extends ConsumerState<RewardAdBlock> {
               showAd();
             },
           )
-        : Container(child: Text("Add not loaded"),);
+        : Container(
+            child: const Text("Add not loaded"),
+          );
   }
 }

@@ -10,7 +10,6 @@ import 'package:presetup/utilities/enum.dart';
 import 'package:presetup/utilities/router.dart';
 import 'package:presetup/widgets/fp_button.dart';
 
-
 class SocialLogin extends ConsumerWidget {
   const SocialLogin({
     Key? key,
@@ -107,12 +106,13 @@ class SocialLogin extends ConsumerWidget {
                 await signInWithFacebook();
               },
             ),
-            if (Platform.isIOS) FpButton(
-              title: "Apple Login",
-              onPressed: () async {
-                await signInWithApple();
-              },
-            ),
+            if (Platform.isIOS)
+              FpButton(
+                title: "Apple Login",
+                onPressed: () async {
+                  await signInWithApple();
+                },
+              ),
           ],
         ),
       ),
