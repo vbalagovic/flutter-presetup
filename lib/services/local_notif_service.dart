@@ -30,9 +30,9 @@ class NotificationService {
 
   void setupLocalNotif() async {
     !kIsWeb && Platform.isLinux
-            ? null
-            : await flutterLocalNotificationsPlugin
-                .getNotificationAppLaunchDetails();
+        ? null
+        : await flutterLocalNotificationsPlugin
+            .getNotificationAppLaunchDetails();
 
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/launcher_icon');

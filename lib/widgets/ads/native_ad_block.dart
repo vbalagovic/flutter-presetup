@@ -38,7 +38,8 @@ class _NativeAdBlockState extends State<NativeAdBlock> {
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
           // Dispose the ad here to free resources.
           ad.dispose();
-          debugPrint('Ad load failed (code=${error.code} message=${error.message})');
+          debugPrint(
+              'Ad load failed (code=${error.code} message=${error.message})');
         },
         // Called when an ad opens an overlay that covers the screen.
         onAdOpened: (Ad ad) => debugPrint('Ad opened.'),
