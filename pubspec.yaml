@@ -36,7 +36,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  go_router: ^11.1.4
+  go_router: ^13.2.0
   easy_localization: ^3.0.1
   flutter_riverpod: ^2.1.3
   google_fonts: ^6.1.0
@@ -44,7 +44,7 @@ dependencies:
   freezed_annotation: ^2.2.0
   change_app_package_name: ^1.1.0
   flutter_launcher_icons: ^0.13.1
-  package_info_plus: ^4.0.1
+  package_info_plus: ^5.0.1
   firebase_core: ^2.4.1
   firebase_analytics: ^10.1.0
   firebase_auth: ^4.2.5
@@ -53,7 +53,7 @@ dependencies:
   sign_in_with_apple: ^5.0.0
   crypto: ^3.0.2
   flutter_facebook_auth: ^6.0.0
-  google_mobile_ads: ^3.0.0
+  google_mobile_ads: ^4.0.0
   flutter_local_notifications: ^16.1.0
   firebase_messaging: ^14.3.0
   firebase_dynamic_links: ^5.1.0
@@ -68,7 +68,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
   build_runner: ^2.3.3
   freezed: ^2.3.2
 

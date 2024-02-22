@@ -10,7 +10,7 @@
             "type": "dart",
             "flutterMode": "debug",
             "program": "lib/main_dev.dart",
-            "args": ["--flavor", "dev", "--no-enable-impeller"],
+            "args": ["--flavor", "dev"],
         },
         {
             "name": "FlutterPresetup PROD",
