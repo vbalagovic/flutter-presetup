@@ -4,6 +4,7 @@
 
 [Flutter Builder](https://flutter-builder.app)
 Flutter Builder is a powerful tool that simplifies Flutter project setup, allowing you to generate new projects quickly with pre-configured integrations for Firebase, AdMob, Firebase Auth, Push Notifications, and more. Flutter Builder is based on this pre-setup project, which provides a solid foundation for building Flutter apps with essential features and best practices. It comes with GUI and new features!
+<img width="1920" alt="Screenshot 2024-10-29 at 15 12 47" src="https://github.com/user-attachments/assets/0ea9e20a-23f5-4548-a3a1-1b612d761747">
 
 ## More structured documentation
 
