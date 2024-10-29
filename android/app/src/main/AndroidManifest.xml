@@ -12,9 +12,11 @@
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
 
+        <!-- BEGIN REMOVE MOBILE ADS -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_id"/>
+        <!-- END REMOVE MOBILE ADS -->
 
         <activity
             android:name=".MainActivity"

@@ -1,5 +1,10 @@
 # Flutter Presetup project
 
+## Coming soon
+
+[Flutter Builder](https://flutter-builder.app)
+Flutter Builder is a powerful tool that simplifies Flutter project setup, allowing you to generate new projects quickly with pre-configured integrations for Firebase, AdMob, Firebase Auth, Push Notifications, and more. Flutter Builder is based on this pre-setup project, which provides a solid foundation for building Flutter apps with essential features and best practices. It comes with GUI and new features!
+
 ## More structured documentation
 
 [Flutter Presetup Gitbook](https://flutterapid.gitbook.io/flutter-presetup/)
@@ -37,7 +42,7 @@ NOTE: dev & prod scheme must be added manually in xcode (check the article above
 
 ## Dependencies & versions
 
-Current Flutter version 3.13.7
+Current Flutter version 3.24.3
 
 Install all dependecies:
 
