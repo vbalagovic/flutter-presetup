@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:easy_localization/easy_localization.dart';
+// BEGIN REMOVE MOBILE ADS
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+// END REMOVE MOBILE ADS
 import 'package:presetup/data/providers/auth_provider.dart';
 import 'package:presetup/data/providers/theme_provider.dart';
 import 'package:presetup/services/push_notif_service.dart';
@@ -15,7 +17,9 @@ import 'package:presetup/utilities/theme.dart';
 
 void mainCommon(options) async {
   WidgetsFlutterBinding.ensureInitialized();
+  // END REMOVE MOBILE ADS
   MobileAds.instance.initialize();
+  // END REMOVE MOBILE ADS
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(
     options: options,
