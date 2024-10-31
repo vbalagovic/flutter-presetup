@@ -83,7 +83,7 @@ sh create_signature.sh
 Update the icons in assets/launcher icons folder and use same naming. Run following command since project uses flutter launcher icons.
 
 ```bash
-fvm flutter pub get && fvm flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons*
+fvm flutter pub get && fvm flutter pub run flutter_launcher_icons -f flutter_launcher_icons*
 ```
 
 ### Step 4) Generate freezed files
