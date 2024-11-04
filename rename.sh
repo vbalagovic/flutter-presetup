@@ -21,7 +21,8 @@ echo ====================================
 
 # You can always use search an replace in text editor if this is not working on your machine
 
-grep --exclude=./rename.sh -r -l "FlutterPresetup" . | sort | uniq | xargs perl -e "s/FlutterPresetup/$appName/" -pi
+#grep --exclude=./rename.sh -r -l "FlutterPresetup" . | sort | uniq | xargs perl -e "s/FlutterPresetup/$appName/" -pi
+grep --exclude=./rename.sh -r -l "FlutterPresetup" . | sort | uniq | xargs perl -pi -e 's/(?<!")(?<!\[)(FlutterPresetup)(?!")(?!=\])/\"$appName\"/g'
 
 grep --exclude=./rename.sh -r -l "com.example.presetup.dev" . | sort | uniq | xargs perl -e "s/com.example.presetup.dev/$bundleId.dev/" -pi
 
