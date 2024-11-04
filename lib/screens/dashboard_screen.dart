@@ -7,9 +7,9 @@ import 'package:presetup/data/providers/auth_provider.dart';
 import 'package:presetup/data/providers/theme_provider.dart';
 import 'package:presetup/flavor_banner.dart';
 // BEGIN REMOVE MOBILE ADS
-//import 'package:presetup/widgets/ads/banner_ad_block.dart';
-//import 'package:presetup/widgets/ads/native_ad_block.dart';
-//import 'package:presetup/widgets/ads/reward_ad_block.dart';
+import 'package:presetup/widgets/ads/banner_ad_block.dart';
+import 'package:presetup/widgets/ads/native_ad_block.dart';
+import 'package:presetup/widgets/ads/reward_ad_block.dart';
 // END REMOVE MOBILE ADS
 
 class DashboardScreen extends ConsumerStatefulWidget {
@@ -72,7 +72,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
               Text("buildNumber: $buildNumber"),
               const Divider(),
               // BEGIN REMOVE MOBILE ADS
-              /* const Text(
+              const Text(
                 "Banner Ad",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
               ),
@@ -90,7 +90,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
               ),
               const Padding(
                   padding: EdgeInsets.all(20), child: RewardAdBlock()),
-                  */
+
               // END REMOVE MOBILE ADS
               const Divider(),
               const SizedBox(
