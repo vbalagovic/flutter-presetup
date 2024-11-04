@@ -22,7 +22,12 @@ echo ====================================
 # You can always use search an replace in text editor if this is not working on your machine
 
 #grep --exclude=./rename.sh -r -l "FlutterPresetup" . | sort | uniq | xargs perl -e "s/FlutterPresetup/$appName/" -pi
-grep --exclude=./rename.sh -r -l "FlutterPresetup" . | sort | uniq | xargs perl -pi -e 's/(?<!")(?<!\[)(FlutterPresetup)(?!")(?!=\])/\"$appName\"/g'
+# For strings that are already quoted in the source
+grep --exclude=./rename.sh -r -l '"FlutterPresetup"' . | sort | uniq | xargs perl -e "s/\"FlutterPresetup\"/\"$appName\"/g" -pi
+grep --exclude=./rename.sh -r -l '"\[dev\] FlutterPresetup"' . | sort | uniq | xargs perl -e "s/\"\[dev\] FlutterPresetup\"/\"[dev] $appName\"/g" -pi
+
+# For unquoted strings that need quotes
+grep --exclude=./rename.sh -r -l "FlutterPresetup" . | sort | uniq | xargs perl -e "s/FlutterPresetup(?!\")/\"$appName\"/g" -pi
 
 grep --exclude=./rename.sh -r -l "com.example.presetup.dev" . | sort | uniq | xargs perl -e "s/com.example.presetup.dev/$bundleId.dev/" -pi
 
