@@ -3,12 +3,12 @@ import 'package:presetup/utilities/theme.dart';
 
 class FpButton extends StatelessWidget {
   const FpButton({
-    Key? key,
+    super.key,
     required this.title,
     required this.onPressed,
     this.buttonColor,
     this.isLoading = false,
-  }) : super(key: key);
+  });
 
   final String title;
   final Color? buttonColor;
@@ -19,14 +19,14 @@ class FpButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
           )),
-          padding: MaterialStateProperty.all<EdgeInsets>(
+          padding: WidgetStateProperty.all<EdgeInsets>(
               const EdgeInsets.symmetric(vertical: 12, horizontal: 16)),
-          backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
-            if (states.contains(MaterialState.disabled)) {
+          backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+            if (states.contains(WidgetState.disabled)) {
               return FpTheme.of(context).primaryColor.withOpacity(0.7);
             }
             return FpTheme.of(context).primaryColor;

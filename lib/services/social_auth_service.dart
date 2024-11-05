@@ -27,10 +27,6 @@ class AuthService {
       EasyLoading.show();
       final googleUser = await googleSignIn.signIn();
       log(googleUser!.email);
-      if (googleUser == null) {
-        EasyLoading.dismiss();
-        return AuthResultStatus.cancelled;
-      }
 
       final googleAuth = await googleUser.authentication;
 
@@ -112,8 +108,11 @@ class AuthService {
         AppleIDAuthorizationScopes.fullName,
       ], nonce: nonce);
       EasyLoading.show();
-      final credential = OAuthProvider("apple.com")
-          .credential(idToken: appleResult.identityToken, rawNonce: rawNonce);
+      final credential = OAuthProvider("apple.com").credential(
+        idToken: appleResult.identityToken,
+        rawNonce: rawNonce,
+        accessToken: appleResult.authorizationCode,
+      );
       status = await ref
           .read(signInProvider.notifier)
           .signInWithCredential(credential);

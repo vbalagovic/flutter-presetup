@@ -31,6 +31,27 @@ class SignInNotifier extends AutoDisposeAsyncNotifier<void> {
     state = await AsyncValue.guard(authRepository.signInAnonymously);
   }
 
+  Future<void> signInWithEmailAndPassword(email, password) async {
+    final authRepository = ref.read(authRepositoryProvider);
+    state = const AsyncLoading();
+    print("EROR $email ");
+    state = await AsyncValue.guard(
+        () => authRepository.signInWithEmailAndPassword(email, password));
+  }
+
+  Future<void> createUserWithEmailAndPassword(email, password) async {
+    final authRepository = ref.read(authRepositoryProvider);
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(
+        () => authRepository.createUserWithEmailAndPassword(email, password));
+  }
+
+  Future<void> resetPassword(email) async {
+    final authRepository = ref.read(authRepositoryProvider);
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() => authRepository.resetPassword(email));
+  }
+
   Future<AuthResultStatus> signInWithCredential(credential) async {
     final authRepository = ref.read(authRepositoryProvider);
     try {

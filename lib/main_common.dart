@@ -91,7 +91,7 @@ class MyAppState extends ConsumerState<MyApp> {
         return MediaQuery(
           // Set the default textScaleFactor to 1.0 for
           // the whole subtree.
-          data: mediaQueryData.copyWith(textScaleFactor: 1.0),
+          data: mediaQueryData.copyWith(textScaler: TextScaler.linear(1.0)),
           child: child!,
         );
       }),

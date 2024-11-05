@@ -12,8 +12,8 @@ import 'package:presetup/widgets/fp_button.dart';
 
 class SocialLogin extends ConsumerWidget {
   const SocialLogin({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
