@@ -17,7 +17,7 @@ import 'package:presetup/utilities/theme.dart';
 
 void mainCommon(options) async {
   WidgetsFlutterBinding.ensureInitialized();
-  // END REMOVE MOBILE ADS
+  // BEGIN REMOVE MOBILE ADS
   MobileAds.instance.initialize();
   // END REMOVE MOBILE ADS
   await EasyLocalization.ensureInitialized();
