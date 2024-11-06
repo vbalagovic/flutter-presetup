@@ -49,8 +49,8 @@
 	<string>$(FACEBOOK_DISPLAY_NAME)</string>
 	<!-- BEGIN REMOVE MOBILE ADS -->
 	<key>GADApplicationIdentifier</key>
-	<!-- END REMOVE MOBILE ADS -->
 	<string>$(ADMOB_ID)</string>
+	<!-- END REMOVE MOBILE ADS -->
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
