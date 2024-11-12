@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:presetup/data/providers/auth_provider.dart';
 import 'package:presetup/services/social_auth_service.dart';
 import 'package:presetup/utilities/auth_handler.dart';
 import 'package:presetup/utilities/enum.dart';
@@ -12,11 +14,13 @@ import 'package:presetup/widgets/fp_button.dart';
 
 class SocialLogin extends ConsumerWidget {
   const SocialLogin({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(signInProvider);
+
     double sizeW = MediaQuery.of(context).size.width / 100;
 
     void handleSocialLogin(AuthResultStatus status) {
@@ -85,35 +89,73 @@ class SocialLogin extends ConsumerWidget {
       return result;
     }
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 25),
-      child: SizedBox(
-        width: Platform.isIOS ? sizeW * 60 : sizeW * 40,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            FpButton(
-              title: "Google Login",
-              onPressed: () async {
-                await signInWithGoogle();
-              },
-            ),
-            FpButton(
-              title: "Facebook Login",
-              onPressed: () async {
-                await signInWithFacebook();
-              },
-            ),
-            if (Platform.isIOS)
-              FpButton(
-                title: "Apple Login",
-                onPressed: () async {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        // Google Login Button
+        _SocialButton(
+          icon: FontAwesomeIcons.google,
+          color: Colors.red,
+          onPressed: state.isLoading
+              ? null
+              : () async {
+                  await signInWithGoogle();
+                },
+        ),
+        const SizedBox(width: 20),
+        // Facebook Login Button
+        _SocialButton(
+          icon: FontAwesomeIcons.facebook,
+          color: Colors.blue,
+          onPressed: state.isLoading
+              ? null
+              : () async {
+                  await signInWithFacebook();
+                },
+        ),
+        const SizedBox(width: 20),
+        // Apple Login Button
+        _SocialButton(
+          icon: FontAwesomeIcons.apple,
+          color: Colors.black,
+          onPressed: state.isLoading
+              ? null
+              : () async {
                   await signInWithApple();
                 },
-              ),
-          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _SocialButton extends StatelessWidget {
+  final IconData icon;
+  final Color color;
+  final VoidCallback? onPressed;
+
+  const _SocialButton({
+    required this.icon,
+    required this.color,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      elevation: 2,
+      shape: const CircleBorder(),
+      clipBehavior: Clip.hardEdge,
+      color: Colors.white,
+      child: InkWell(
+        onTap: onPressed,
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          child: Icon(
+            icon,
+            size: 24,
+            color: color,
+          ),
         ),
       ),
     );

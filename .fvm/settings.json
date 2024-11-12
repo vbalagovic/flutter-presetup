@@ -1,0 +1,9 @@
+{
+    "dart.flutterSdkPath": ".fvm/flutter_sdk",
+    "[dart]": {
+      "editor.defaultFormatter": "Dart-Code.dart-code",
+      "editor.formatOnSave": true
+    },
+    "debug.toolBarLocation": "commandCenter",
+    "cmake.configureOnOpen": false
+  }
