@@ -19,9 +19,14 @@ NOTE: dev & prod scheme must be added manually in xcode (check the article above
 ## Screenshots
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/30495155/212721492-ef0bf13f-f497-4ac1-9f68-7fff40a87932.png" width="250" />
-  <img src="https://user-images.githubusercontent.com/30495155/212721593-34602878-e152-4eea-b7ef-1484fe328dca.png" width="250" />
-  <img src="https://user-images.githubusercontent.com/30495155/212721626-b327b8c4-c0e6-4913-a6c7-a4020d054261.png" width="250" />
+  <img src="https://github.com/user-attachments/assets/f726ec0c-43b0-439a-bfba-b687b6902cbd" width="250" />
+  <img src="https://github.com/user-attachments/assets/44b83a60-254a-4397-99a3-66935e94fd66" width="250" />
+  <img src="https://github.com/user-attachments/assets/ee8e2a85-21fa-4a2d-a1b4-480c873adf1e" width="250" />
+</p>
+<p float="left">
+  <img src="https://github.com/user-attachments/assets/5fc70921-0cc3-45be-8f3f-9ad23dcfef62" width="250" />
+  <img src="https://github.com/user-attachments/assets/43347c12-d21f-4912-a0a0-6405e1eda0a4" width="250" />
+  <img src="https://github.com/user-attachments/assets/e9198183-c70e-4b03-b200-35a45f6ab1cf" width="250" />
 </p>
 
 ### Task list [project from scratch with assembled features listed below]
