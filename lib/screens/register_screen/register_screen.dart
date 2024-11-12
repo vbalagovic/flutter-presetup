@@ -147,8 +147,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                                     _passwordController.text,
                                   )
                                   .catchError((onError) {
-                                log("Error --------");
-                                print(onError);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content: Text(onError.toString())));
                               });
                             }
                           },

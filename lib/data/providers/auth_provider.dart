@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:presetup/data/repositories/auth_repository.dart';
 import 'package:presetup/utilities/enum.dart';
@@ -31,25 +32,75 @@ class SignInNotifier extends AutoDisposeAsyncNotifier<void> {
     state = await AsyncValue.guard(authRepository.signInAnonymously);
   }
 
-  Future<void> signInWithEmailAndPassword(email, password) async {
+  Future<dynamic> signInWithEmailAndPassword(email, password) async {
     final authRepository = ref.read(authRepositoryProvider);
     state = const AsyncLoading();
-    print("EROR $email ");
-    state = await AsyncValue.guard(
-        () => authRepository.signInWithEmailAndPassword(email, password));
+
+    try {
+      // Attempt sign-in
+      final result =
+          await authRepository.signInWithEmailAndPassword(email, password);
+
+      // On success, return the result
+      state = AsyncData(result);
+    } catch (error, stackTrace) {
+      // Firebase Auth or any other error handling
+      debugPrint("Sign-in failed with error: $error");
+
+      // Handling FirebaseAuthException explicitly for better understanding of errors
+      if (error is FirebaseAuthException) {
+        debugPrint("Firebase Auth Error: ${error.message}");
+        state = AsyncError(error, stackTrace);
+        throw Exception(error.message);
+      }
+
+      // Set state with the error and stack trace
+      state = AsyncError(error, stackTrace);
+    }
   }
 
-  Future<void> createUserWithEmailAndPassword(email, password) async {
+  Future<dynamic> createUserWithEmailAndPassword(email, password) async {
     final authRepository = ref.read(authRepositoryProvider);
     state = const AsyncLoading();
-    state = await AsyncValue.guard(
-        () => authRepository.createUserWithEmailAndPassword(email, password));
+
+    try {
+      // Attempt sign-in
+      final result =
+          await authRepository.createUserWithEmailAndPassword(email, password);
+
+      // On success, return the result
+      state = AsyncData(result);
+    } catch (error, stackTrace) {
+      debugPrint("Sign-up failed with error: $error");
+
+      if (error is FirebaseAuthException) {
+        debugPrint("Firebase Auth Error: ${error.message}");
+        state = AsyncError(error, stackTrace);
+        throw Exception(error.message);
+      }
+
+      state = AsyncError(error, stackTrace);
+    }
   }
 
   Future<void> resetPassword(email) async {
     final authRepository = ref.read(authRepositoryProvider);
     state = const AsyncLoading();
-    state = await AsyncValue.guard(() => authRepository.resetPassword(email));
+    try {
+      final result = await authRepository.resetPassword(email);
+
+      state = AsyncData(result);
+    } catch (error, stackTrace) {
+      debugPrint("Sign-up failed with error: $error");
+
+      if (error is FirebaseAuthException) {
+        debugPrint("Firebase Auth Error: ${error.message}");
+        state = AsyncError(error, stackTrace);
+        throw Exception(error.message);
+      }
+
+      state = AsyncError(error, stackTrace);
+    }
   }
 
   Future<AuthResultStatus> signInWithCredential(credential) async {

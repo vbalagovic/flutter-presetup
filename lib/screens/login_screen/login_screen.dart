@@ -7,7 +7,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:presetup/data/providers/auth_provider.dart';
 import 'package:presetup/flavor_banner.dart';
 import 'package:presetup/screens/forgot_password_screen/forgot_password_screen.dart';
+import 'package:presetup/screens/login_screen/widgets/social_login.dart';
 import 'package:presetup/screens/register_screen/register_screen.dart';
+import 'package:presetup/widgets/overlays/styled_overlays.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -190,7 +192,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                       .signInWithEmailAndPassword(
                                         _emailController.text.trim(),
                                         _passwordController.text,
-                                      );
+                                      )
+                                      .catchError((onError) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content: Text(onError.toString())));
+                                  });
                                 }
                               },
                         icon: const Icon(FontAwesomeIcons.rightToBracket,
@@ -237,31 +244,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       ),
                       const SizedBox(height: 32),
                       // Social Login Buttons
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // Google Login Button
-                          _SocialButton(
-                            icon: FontAwesomeIcons.google,
-                            color: Colors.red,
-                            onPressed: state.isLoading ? null : () {},
-                          ),
-                          const SizedBox(width: 20),
-                          // Facebook Login Button
-                          _SocialButton(
-                            icon: FontAwesomeIcons.facebook,
-                            color: Colors.blue,
-                            onPressed: state.isLoading ? null : () {},
-                          ),
-                          const SizedBox(width: 20),
-                          // Apple Login Button
-                          _SocialButton(
-                            icon: FontAwesomeIcons.apple,
-                            color: Colors.black,
-                            onPressed: state.isLoading ? null : () {},
-                          ),
-                        ],
-                      ),
+                      SocialLogin(),
                       const SizedBox(height: 32),
                       // Register and Skip Section
                       Row(
@@ -319,35 +302,4 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 }
 
 // Custom Social Button Widget
-class _SocialButton extends StatelessWidget {
-  final IconData icon;
-  final Color color;
-  final VoidCallback? onPressed;
 
-  const _SocialButton({
-    required this.icon,
-    required this.color,
-    this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      elevation: 2,
-      shape: const CircleBorder(),
-      clipBehavior: Clip.hardEdge,
-      color: Colors.white,
-      child: InkWell(
-        onTap: onPressed,
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          child: Icon(
-            icon,
-            size: 24,
-            color: color,
-          ),
-        ),
-      ),
-    );
-  }
-}
