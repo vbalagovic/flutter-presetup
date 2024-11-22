@@ -61,6 +61,7 @@ dependencies:
   firebase_dynamic_links: ^6.0.8
   dio: ^5.3.3
   font_awesome_flutter: ^10.8.0
+  flutter_builder_ui_kit: ^1.0.5
 
 dev_dependencies:
   flutter_test:

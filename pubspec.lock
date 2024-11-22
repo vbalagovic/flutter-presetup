@@ -411,6 +411,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_builder_ui_kit:
+    dependency: "direct main"
+    description:
+      name: flutter_builder_ui_kit
+      sha256: "2e0b189b36f56af1dd203365258fbb4a93ff85015a79efa222fa75864a0f0261"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.5"
   flutter_easyloading:
     dependency: "direct main"
     description:
@@ -1135,6 +1143,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.2"
+  timeago:
+    dependency: transitive
+    description:
+      name: timeago
+      sha256: "054cedf68706bb142839ba0ae6b135f6b68039f0b8301cbe8784ae653d5ff8de"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.7.0"
   timezone:
     dependency: transitive
     description:
@@ -1272,5 +1288,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.5.0 <4.0.0"
+  dart: ">=3.5.3 <4.0.0"
   flutter: ">=3.24.0"
