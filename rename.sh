@@ -26,15 +26,15 @@ grep --exclude=./rename.sh -r -l "FlutterPresetup" . | sort | uniq | xargs perl 
 grep --exclude=./rename.sh -r -l "$appName" . | sort | uniq | xargs perl -e '
     s/(?<!\")('"$appName"')(?!\")/"'"$appName"'"/g
 ' -pi
-grep --exclude=./rename.sh -r -l "com.example.presetup.dev" . | sort | uniq | xargs perl -e "s/com.example.presetup.dev/$bundleId.dev/" -pi
+grep --exclude=./rename.sh -r -l "app.example.presetup.dev" . | sort | uniq | xargs perl -e "s/app.example.presetup.dev/$bundleId.dev/" -pi
 
-grep --exclude=./rename.sh -r -l "com.example.presetup" . | sort | uniq | xargs perl -e "s/com.example.presetup/$bundleId/" -pi
+grep --exclude=./rename.sh -r -l "app.example.presetup" . | sort | uniq | xargs perl -e "s/app.example.presetup/$bundleId/" -pi
 
 grep --exclude=./rename.sh -r -l "presetup" . | sort | uniq | xargs perl -e "s/presetup/$packageName/" -pi
 
-grep --exclude=./rename.sh -r -l "com.example.$packageName.dev" . | sort | uniq | xargs perl -e "s/com.example.$packageName.dev/$bundleId.dev/" -pi
+grep --exclude=./rename.sh -r -l "app.example.$packageName.dev" . | sort | uniq | xargs perl -e "s/app.example.$packageName.dev/$bundleId.dev/" -pi
 
-grep --exclude=./rename.sh -r -l "com.example.$packageName" . | sort | uniq | xargs perl -e "s/com.example.$packageName/$bundleId/" -pi
+grep --exclude=./rename.sh -r -l "app.example.$packageName" . | sort | uniq | xargs perl -e "s/app.example.$packageName/$bundleId/" -pi
 
 fvm flutter pub run change_app_package_name:main $bundleId
 
