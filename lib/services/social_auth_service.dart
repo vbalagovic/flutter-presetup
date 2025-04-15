@@ -56,7 +56,7 @@ class AuthService {
         final AccessToken accessToken = result.accessToken!;
         final userData = await FacebookAuth.i.getUserData();
         final OAuthCredential credential =
-            FacebookAuthProvider.credential(accessToken.token);
+            FacebookAuthProvider.credential(accessToken.tokenString);
         log("facebook status $userData");
         status = await ref
             .read(signInProvider.notifier)

@@ -1,10 +1,11 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:easy_localization/easy_localization.dart';
 // BEGIN REMOVE MOBILE ADS
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 // END REMOVE MOBILE ADS
@@ -12,7 +13,6 @@ import 'package:presetup/data/providers/auth_provider.dart';
 import 'package:presetup/data/providers/theme_provider.dart';
 import 'package:presetup/services/push_notif_service.dart';
 import 'package:presetup/utilities/router.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:presetup/utilities/theme.dart';
 
 void mainCommon(options) async {

@@ -1,0 +1,2 @@
+/Users/antonio/Projects/flutter-presetup/android/app/.cxx/Debug/3e1tfp2l/x86/CMakeFiles/edit_cache.dir
+/Users/antonio/Projects/flutter-presetup/android/app/.cxx/Debug/3e1tfp2l/x86/CMakeFiles/rebuild_cache.dir

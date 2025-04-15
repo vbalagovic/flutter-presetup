@@ -1,5 +1,4 @@
-import 'dart:developer';
-import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:presetup/utilities/router.dart';
@@ -51,18 +50,18 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
   }
 
   initSystem() async {
-    FirebaseDynamicLinks dynamicLinks = FirebaseDynamicLinks.instance;
-    PendingDynamicLinkData? initialLink = await dynamicLinks.getInitialLink();
+    // FirebaseDynamicLinks dynamicLinks = FirebaseDynamicLinks.instance;
+    // PendingDynamicLinkData? initialLink = await dynamicLinks.getInitialLink();
 
-    if (initialLink != null) {
-      inspect(initialLink);
-    }
+    // if (initialLink != null) {
+    //   inspect(initialLink);
+    // }
 
-    dynamicLinks.onLink.listen((dynamicLinkData) async {
-      inspect(dynamicLinkData);
-    }).onError((error) {
-      // Handle errors
-    });
+    // dynamicLinks.onLink.listen((dynamicLinkData) async {
+    //   inspect(dynamicLinkData);
+    // }).onError((error) {
+    //   // Handle errors
+    // });
 
     Future.delayed(const Duration(seconds: 2)).then((value) async {
       ref.read(routerProvider).go("/login");

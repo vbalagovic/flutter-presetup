@@ -1,0 +1,20 @@
+                        -H/Users/antonio/fvm/versions/3.29.2/packages/flutter_tools/gradle/src/main/groovy
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_SYSTEM_VERSION=34
+-DANDROID_PLATFORM=android-34
+-DANDROID_ABI=x86
+-DCMAKE_ANDROID_ARCH_ABI=x86
+-DANDROID_NDK=/Users/antonio/Library/Android/sdk/ndk/27.0.12077973
+-DCMAKE_ANDROID_NDK=/Users/antonio/Library/Android/sdk/ndk/27.0.12077973
+-DCMAKE_TOOLCHAIN_FILE=/Users/antonio/Library/Android/sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=/Users/antonio/Library/Android/sdk/cmake/3.22.1/bin/ninja
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/antonio/Projects/flutter-presetup/build/app/intermediates/cxx/Debug/233u41l2/obj/x86
+-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=/Users/antonio/Projects/flutter-presetup/build/app/intermediates/cxx/Debug/233u41l2/obj/x86
+-DCMAKE_BUILD_TYPE=Debug
+-B/Users/antonio/Projects/flutter-presetup/android/app/.cxx/Debug/233u41l2/x86
+-GNinja
+-Wno-dev
+--no-warn-unused-cli
+                        Build command args: []
+                        Version: 2

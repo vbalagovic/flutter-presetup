@@ -48,8 +48,8 @@ class NotificationService {
       requestAlertPermission: true,
       requestBadgePermission: true,
       requestSoundPermission: true,
-      onDidReceiveLocalNotification:
-          (int id, String? title, String? body, String? payload) async {},
+      // onDidReceiveLocalNotification:
+      //     (int id, String? title, String? body, String? payload) async {},
     );
 
     final InitializationSettings initializationSettings =
