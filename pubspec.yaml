@@ -54,7 +54,7 @@ dependencies:
   go_router: ^14.8.1
   google_fonts: ^6.2.1
   # BEGIN REMOVE MOBILE ADS
-  google_mobile_ads: ^6.0.0
+  # google_mobile_ads: ^6.0.0
   # END REMOVE MOBILE ADS
   google_sign_in: ^6.3.0
   package_info_plus: ^8.3.0

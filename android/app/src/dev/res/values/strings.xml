@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-   <string name="app_name">[dev] FlutterPresetup</string>
+   <string name="app_name">[dev] "FlutterPresetup"</string>
    <string name="facebook_app_id">facebook-app-id-dev</string>
    <string name="facebook_client_token">facebook-app-token-dev</string>
    <string name="admob_id">admob-android-id-dev</string>

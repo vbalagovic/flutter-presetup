@@ -2,7 +2,9 @@ plugins {
     id "com.android.application"
     id "dev.flutter.flutter-gradle-plugin"
     id "org.jetbrains.kotlin.android"
-    id "com.google.gms.google-services"
+    // BEGIN REMOVE MOBILE ADS
+    // id "com.google.gms.google-services"
+    // END REMOVE MOBILE ADS
 }
 
 def localProperties = new Properties()
@@ -43,7 +45,7 @@ if (flutterVersionName == null) {
 // END REMOVE MOBILE ADS
 
 android {
-    namespace "com.example.presetup"
+    namespace "app.example.presetup"
     compileSdkVersion 35
     ndkVersion "27.0.12077973"
 
@@ -62,7 +64,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.presetup"
+        applicationId "app.example.presetup"
         minSdkVersion 34
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()

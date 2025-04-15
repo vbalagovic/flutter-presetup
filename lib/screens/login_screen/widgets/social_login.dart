@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -10,7 +9,6 @@ import 'package:presetup/services/social_auth_service.dart';
 import 'package:presetup/utilities/auth_handler.dart';
 import 'package:presetup/utilities/enum.dart';
 import 'package:presetup/utilities/router.dart';
-import 'package:presetup/widgets/fp_button.dart';
 
 class SocialLogin extends ConsumerWidget {
   const SocialLogin({

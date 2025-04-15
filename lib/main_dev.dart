@@ -8,7 +8,7 @@ void main() {
     env: "dev",
     name: "DEV FlutterPresetup",
     values: FlavorValues(
-        bundleID: 'com.example.presetup.dev',
+        bundleID: 'app.example.presetup.dev',
         appID: '',
         baseUrl: '',
         apiUrl: '',

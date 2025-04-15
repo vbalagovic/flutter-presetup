@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.presetup">
+    package="app.example.presetup">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -13,9 +13,9 @@
         android:icon="@mipmap/launcher_icon">
 
         <!-- BEGIN REMOVE MOBILE ADS -->
-        <meta-data
+        <!-- <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/admob_id"/>
+            android:value="@string/admob_id"/> -->
         <!-- END REMOVE MOBILE ADS -->
 
         <activity

@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,6 @@ import 'package:presetup/flavor_banner.dart';
 import 'package:presetup/screens/forgot_password_screen/forgot_password_screen.dart';
 import 'package:presetup/screens/login_screen/widgets/social_login.dart';
 import 'package:presetup/screens/register_screen/register_screen.dart';
-import 'package:presetup/widgets/overlays/styled_overlays.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -302,4 +302,3 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 }
 
 // Custom Social Button Widget
-

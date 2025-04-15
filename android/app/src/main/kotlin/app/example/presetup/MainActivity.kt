@@ -1,4 +1,4 @@
-package com.example.presetup
+package app.example.presetup
 
 import io.flutter.embedding.android.FlutterActivity
 
@@ -7,15 +7,15 @@ import io.flutter.embedding.engine.FlutterEngine
 
 // BEGIN REMOVE MOBILE ADS
 // COMPLETE: Import io.flutter.plugins.googlemobileads.GoogleMobileAdsPlugin
-import io.flutter.plugins.googlemobileads.GoogleMobileAdsPlugin
+// import io.flutter.plugins.googlemobileads.GoogleMobileAdsPlugin
 // END REMOVE MOBILE ADS
 class MainActivity: FlutterActivity() {
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
 
         // BEGIN REMOVE MOBILE ADS
-        GoogleMobileAdsPlugin.registerNativeAdFactory(
-                flutterEngine, "listTile", ListTileNativeAdFactory(context))
+        // GoogleMobileAdsPlugin.registerNativeAdFactory(
+        //         flutterEngine, "listTile", ListTileNativeAdFactory(context))
         // END REMOVE MOBILE ADS
     }
 
@@ -23,7 +23,7 @@ class MainActivity: FlutterActivity() {
         super.cleanUpFlutterEngine(flutterEngine)
 
         // BEGIN REMOVE MOBILE ADS
-        GoogleMobileAdsPlugin.unregisterNativeAdFactory(flutterEngine, "listTile")
+        // GoogleMobileAdsPlugin.unregisterNativeAdFactory(flutterEngine, "listTile")
         // END REMOVE MOBILE ADS
     }
 }

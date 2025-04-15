@@ -2,7 +2,7 @@ import UIKit
 import Flutter
 
 /* BEGIN REMOVE MOBILE ADS */
-import google_mobile_ads
+// import google_mobile_ads
 /* END REMOVE MOBILE ADS */
 
 @main
@@ -19,12 +19,12 @@ import google_mobile_ads
     GeneratedPluginRegistrant.register(with: self)
 
     /* BEGIN REMOVE MOBILE ADS */
-      let listTileFactory = ListTileNativeAdFactory()
-      FLTGoogleMobileAdsPlugin.registerNativeAdFactory(
-          self, factoryId: "listTile", nativeAdFactory: listTileFactory)
+    //   let listTileFactory = ListTileNativeAdFactory()
+    //   FLTGoogleMobileAdsPlugin.registerNativeAdFactory(
+    //       self, factoryId: "listTile", nativeAdFactory: listTileFactory)
 
-    // TODO: You can add test devices
-    GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "e3e7e04c3f28fae5ad995f71016792cc" ]
+    // // TODO: You can add test devices
+    // GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "e3e7e04c3f28fae5ad995f71016792cc" ]
     /* END REMOVE MOBILE ADS */
 
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
