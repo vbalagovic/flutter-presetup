@@ -11,7 +11,7 @@ part 'theme_provider.freezed.dart';
 
 // Creating state where the freezed annotation will suggest that boilerplate code needs to be generated
 @freezed
-class ThemeState with _$ThemeState {
+abstract class ThemeState with _$ThemeState {
   const factory ThemeState({
     @Default(ThemeMode.light) ThemeMode mode,
   }) = _ThemeState;

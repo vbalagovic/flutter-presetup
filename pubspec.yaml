@@ -20,7 +20,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.3
+  sdk: '>=3.5.3 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -45,9 +45,9 @@ dependencies:
   change_app_package_name: ^1.1.0
   flutter_launcher_icons: ^0.14.1
   package_info_plus: ^9.0.0
-  firebase_core: ^3.6.0
-  firebase_analytics: ^11.3.3
-  firebase_auth: ^5.3.1
+  firebase_core: ^4.2.1
+  firebase_analytics: ^12.0.4
+  firebase_auth: ^6.1.2
   flutter_easyloading: ^3.0.5
   google_sign_in: ^7.2.0
   sign_in_with_apple: ^7.0.1
@@ -57,7 +57,7 @@ dependencies:
   google_mobile_ads: ^6.0.0
   # END REMOVE MOBILE ADS
   flutter_local_notifications: ^19.5.0
-  firebase_messaging: ^15.1.3
+  firebase_messaging: ^16.0.4
   dio: ^5.3.3
   font_awesome_flutter: ^10.8.0
 
