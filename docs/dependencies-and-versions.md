@@ -1,6 +1,6 @@
 # Dependencies & versions
 
-Current Flutter version 3.13.7
+Current Flutter version 3.38.2
 
 Install all dependecies:
 
