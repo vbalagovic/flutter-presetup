@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:math' as dm;
@@ -21,18 +22,64 @@ class AuthService {
 
   Future<AuthResultStatus> googleSignIn() async {
     log("google sign in -----");
-    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final GoogleSignIn googleSignIn = GoogleSignIn.instance;
+
+    // Initialize if not already initialized
+    try {
+      await googleSignIn.initialize();
+    } catch (e) {
+      log("GoogleSignIn already initialized or initialization error: $e");
+    }
+
     log("google sign in");
     try {
       EasyLoading.show();
-      final googleUser = await googleSignIn.signIn();
-      log(googleUser!.email);
 
-      final googleAuth = await googleUser.authentication;
+      // For platforms that support authenticate(), use it
+      if (googleSignIn.supportsAuthenticate()) {
+        await googleSignIn.authenticate();
+      }
+
+      // Get the authenticated user from the stream
+      GoogleSignInAccount? googleUser;
+
+      // Wait for authentication event with timeout
+      final completer = Completer<GoogleSignInAuthenticationEvent?>();
+      final subscription = googleSignIn.authenticationEvents.listen((event) {
+        // The event contains account information when user is authenticated
+        if (!completer.isCompleted) {
+          completer.complete(event);
+        }
+      });
+
+      try {
+        final authEvent = await completer.future.timeout(
+          const Duration(seconds: 30),
+          onTimeout: () => null,
+        );
+
+        // The event IS the account in google_sign_in 7.x
+        // Cast the event as GoogleSignInAccount
+        googleUser = authEvent as GoogleSignInAccount?;
+      } finally {
+        await subscription.cancel();
+      }
+
+      if (googleUser == null) {
+        throw Exception('Google sign-in failed or was cancelled');
+      }
+
+      log(googleUser.email);
+
+      // Request authorization with required scopes
+      final authorization =
+          await googleUser.authorizationClient.authorizeScopes(const [
+        'email',
+        'https://www.googleapis.com/auth/userinfo.profile',
+      ]);
 
       final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
+        accessToken: authorization.accessToken,
       );
 
       status = await ref
@@ -56,7 +103,7 @@ class AuthService {
         final AccessToken accessToken = result.accessToken!;
         final userData = await FacebookAuth.i.getUserData();
         final OAuthCredential credential =
-            FacebookAuthProvider.credential(accessToken.token);
+            FacebookAuthProvider.credential(accessToken.tokenString);
         log("facebook status $userData");
         status = await ref
             .read(signInProvider.notifier)

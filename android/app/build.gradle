@@ -1,3 +1,14 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+    // BEGIN REMOVE MOBILE ADS
+    // Uncomment below when Firebase is configured
+    // id "com.google.gms.google-services"
+    // END REMOVE MOBILE ADS
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -12,12 +23,6 @@ if (keystorePropertiesFile.exists()) {
    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
-
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    throw new FileNotFoundException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
-}
-
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
     flutterVersionCode = '1'
@@ -28,25 +33,20 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-// BEGIN REMOVE MOBILE ADS
-//apply plugin: 'com.google.gms.google-services'
-// END REMOVE MOBILE ADS
-
 android {
     namespace "com.example.presetup"
-    compileSdkVersion 34
+    compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
+        // Required for flutter_local_notifications
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
 
     sourceSets {
@@ -55,8 +55,8 @@ android {
 
     defaultConfig {
         applicationId "com.example.presetup"
-        minSdkVersion 34
-        targetSdkVersion flutter.targetSdkVersion
+        minSdk flutter.minSdkVersion
+        targetSdk flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -68,8 +68,8 @@ android {
             applicationIdSuffix ".dev"
         }
         prod {
-            applicationIdSuffix ""
             dimension "app"
+            applicationIdSuffix ""
         }
     }
 
@@ -89,10 +89,11 @@ android {
     }
 }
 
-flutter {
-    source '../..'
+dependencies {
+    // Required for flutter_local_notifications core library desugaring
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
 }
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+flutter {
+    source "../.."
 }

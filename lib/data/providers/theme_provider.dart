@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 // freezed package for generation of boilperplate code
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:presetup/utilities/theme.dart';
