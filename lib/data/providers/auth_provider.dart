@@ -18,9 +18,9 @@ final authStateChangesProvider = StreamProvider<User?>((ref) {
 });
 
 final signInProvider =
-    AutoDisposeAsyncNotifierProvider<SignInNotifier, void>(SignInNotifier.new);
+    AsyncNotifierProvider<SignInNotifier, void>(SignInNotifier.new);
 
-class SignInNotifier extends AutoDisposeAsyncNotifier<void> {
+class SignInNotifier extends AsyncNotifier<void> {
   @override
   FutureOr<void> build() {
     //

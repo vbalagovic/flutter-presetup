@@ -60,7 +60,7 @@ platform :ios do
 
     params = env == "dev" ? '--flavor dev -t lib/main_dev.dart ' : '--flavor prod -t lib/main_prod.dart '
     desc("Cleaning...")
-    sh_on_root(command: "fvm install #{ENV['FLUTTER_VERSION']} && fvm use #{ENV['FLUTTER_VERSION']} && fvm flutter clean && rm -Rf ios/Pods && rm -Rf ios/.symlinks && rm -Rf ios/Flutter/Flutter.framework && rm -Rf ios/Flutter/Flutter.podspec")
+    sh_on_root(command: "fvm install #{ENV['FLUTTER_VERSION']} && fvm use #{ENV['FLUTTER_VERSION']} --force && fvm flutter clean && rm -Rf ios/Pods && rm -Rf ios/.symlinks && rm -Rf ios/Flutter/Flutter.framework && rm -Rf ios/Flutter/Flutter.podspec")
     desc("Building...")
     sh_on_root(command: "cd ios && gem install cocoapods")
     sh_on_root(command: "fvm use #{ENV['FLUTTER_VERSION']} && fvm flutter pub get && cd ios && fvm flutter precache --ios && pod install --repo-update")

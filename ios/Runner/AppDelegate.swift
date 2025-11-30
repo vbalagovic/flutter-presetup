@@ -24,7 +24,7 @@ import google_mobile_ads
           self, factoryId: "listTile", nativeAdFactory: listTileFactory)
 
     // TODO: You can add test devices
-    GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "e3e7e04c3f28fae5ad995f71016792cc" ]
+    MobileAds.shared.requestConfiguration.testDeviceIdentifiers = [ "e3e7e04c3f28fae5ad995f71016792cc" ]
     /* END REMOVE MOBILE ADS */
 
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)

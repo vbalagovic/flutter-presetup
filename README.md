@@ -48,7 +48,7 @@ NOTE: dev & prod scheme must be added manually in xcode (check the article above
 
 ## Dependencies & versions
 
-Current Flutter version 3.24.3
+Current Flutter version 3.38.2
 
 Install all dependecies:
 
