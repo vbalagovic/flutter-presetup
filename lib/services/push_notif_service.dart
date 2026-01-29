@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import './local_notif_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -19,8 +20,7 @@ class PushNotificationsService {
 
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-    await initiateToken();
-
+    // Request permission first (this is required before getting token on iOS)
     NotificationSettings settings = await messaging.requestPermission(
       alert: true,
       announcement: false,
@@ -35,6 +35,10 @@ class PushNotificationsService {
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       log('User granted permission');
+
+      // Only try to get token after permission is granted
+      await initiateToken();
+
       setupInteractedMessage();
     } else {
       log('User declined or has not accepted permission');
@@ -76,16 +80,37 @@ class PushNotificationsService {
   }
 
   Future<String?> initiateToken() async {
-    // Get the token each time the application loads
-    String? token = await messaging.getToken();
-    log("TOKEN $token");
-    final localStorage = await SharedPreferences.getInstance();
-    localStorage.setString('fcm_token', token.toString());
-    await saveTokenToDatabase(token);
+    try {
+      // On iOS, we need to wait for APNS token before getting FCM token
+      if (Platform.isIOS) {
+        // Check if APNS token is available (won't be on simulator)
+        String? apnsToken = await messaging.getAPNSToken();
+        if (apnsToken == null) {
+          log("APNS token not available (running on simulator or APNS not configured)");
+          // On simulator or without APNS, we can't get FCM token - this is expected
+          return null;
+        }
+      }
 
-    // Any time the token refreshes, store this in the database too.
-    messaging.onTokenRefresh.listen(saveTokenToDatabase);
-    return token;
+      // Get the token each time the application loads
+      String? token = await messaging.getToken();
+      log("TOKEN $token");
+
+      if (token != null) {
+        final localStorage = await SharedPreferences.getInstance();
+        localStorage.setString('fcm_token', token);
+        await saveTokenToDatabase(token);
+
+        // Any time the token refreshes, store this in the database too.
+        messaging.onTokenRefresh.listen(saveTokenToDatabase);
+      }
+
+      return token;
+    } catch (e) {
+      log("Error getting FCM token: $e");
+      // This is expected on iOS simulator - push notifications won't work there
+      return null;
+    }
   }
 
   Future<bool> saveTokenToDatabase(token) async {
