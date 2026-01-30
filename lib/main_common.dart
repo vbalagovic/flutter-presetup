@@ -21,9 +21,7 @@ void mainCommon(options) async {
   MobileAds.instance.initialize();
   // END REMOVE MOBILE ADS
   await EasyLocalization.ensureInitialized();
-  await Firebase.initializeApp(
-    options: options,
-  );
+  await Firebase.initializeApp(options: options);
   FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   final pushNotifService = PushNotificationsService();
 
@@ -38,15 +36,17 @@ void mainCommon(options) async {
   //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   final container = ProviderContainer();
 
-  await container.read(authStateChangesProvider.future);
-  runApp(EasyLocalization(
-      supportedLocales: const [
-        Locale('en'),
-      ],
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('en')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
       child: UncontrolledProviderScope(
-          container: container, child: const MyApp())));
+        container: container,
+        child: const MyApp(),
+      ),
+    ),
+  );
 }
 
 void configLoading() {}
@@ -83,18 +83,20 @@ class MyAppState extends ConsumerState<MyApp> {
       darkTheme: ThemeData(brightness: Brightness.dark),
       themeMode: themeMode,
       routerConfig: router,
-      builder: EasyLoading.init(builder: (context, child) {
-        //EasyLoading.init();
-        // Obtain the current media query information.
-        final mediaQueryData = MediaQuery.of(context);
+      builder: EasyLoading.init(
+        builder: (context, child) {
+          //EasyLoading.init();
+          // Obtain the current media query information.
+          final mediaQueryData = MediaQuery.of(context);
 
-        return MediaQuery(
-          // Set the default textScaleFactor to 1.0 for
-          // the whole subtree.
-          data: mediaQueryData.copyWith(textScaler: TextScaler.linear(1.0)),
-          child: child!,
-        );
-      }),
+          return MediaQuery(
+            // Set the default textScaleFactor to 1.0 for
+            // the whole subtree.
+            data: mediaQueryData.copyWith(textScaler: TextScaler.linear(1.0)),
+            child: child!,
+          );
+        },
+      ),
     );
   }
 }
