@@ -1,6 +1,6 @@
 import 'dart:developer';
-import 'dart:io';
 
+import 'package:presetup/utilities/platform_helper.dart';
 import './local_notif_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -51,7 +51,9 @@ class PushNotificationsService {
       log('Message data: ${message.data}');
 
       if (message.notification != null) {
-        log('Message also contained a notification: ${message.notification!.title}');
+        log(
+          'Message also contained a notification: ${message.notification!.title}',
+        );
         sendNotif(message);
       }
     });
@@ -75,18 +77,21 @@ class PushNotificationsService {
 
   void sendNotif(RemoteMessage notificationMessage) async {
     await NotificationService().showNotification(
-        notificationMessage.notification!.title,
-        notificationMessage.notification!.body);
+      notificationMessage.notification!.title,
+      notificationMessage.notification!.body,
+    );
   }
 
   Future<String?> initiateToken() async {
     try {
       // On iOS, we need to wait for APNS token before getting FCM token
-      if (Platform.isIOS) {
+      if (PlatformHelper.isIOS) {
         // Check if APNS token is available (won't be on simulator)
         String? apnsToken = await messaging.getAPNSToken();
         if (apnsToken == null) {
-          log("APNS token not available (running on simulator or APNS not configured)");
+          log(
+            "APNS token not available (running on simulator or APNS not configured)",
+          );
           // On simulator or without APNS, we can't get FCM token - this is expected
           return null;
         }

@@ -3,19 +3,23 @@ import 'dart:developer';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:async';
-import 'dart:io';
+import 'package:presetup/utilities/platform_helper.dart';
 
 @pragma('vm:entry-point')
 void notificationTapBackground(
-    NotificationResponse notificationResponse) async {
+  NotificationResponse notificationResponse,
+) async {
   // ignore: avoid_print
-  print('notification(${notificationResponse.id}) action tapped: '
-      '${notificationResponse.actionId} with'
-      ' payload: ${notificationResponse.payload}');
+  print(
+    'notification(${notificationResponse.id}) action tapped: '
+    '${notificationResponse.actionId} with'
+    ' payload: ${notificationResponse.payload}',
+  );
   if (notificationResponse.input?.isNotEmpty ?? false) {
     // ignore: avoid_print
     print(
-        'notification action tapped with input: ${notificationResponse.input}');
+      'notification action tapped with input: ${notificationResponse.input}',
+    );
   }
   if (notificationResponse.payload != null) {
     //}));
@@ -29,10 +33,10 @@ class NotificationService {
       FlutterLocalNotificationsPlugin();
 
   void setupLocalNotif() async {
-    !kIsWeb && Platform.isLinux
+    !kIsWeb && PlatformHelper.isLinux
         ? null
         : await flutterLocalNotificationsPlugin
-            .getNotificationAppLaunchDetails();
+              .getNotificationAppLaunchDetails();
 
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/launcher_icon');
@@ -45,45 +49,47 @@ class NotificationService {
 
     final DarwinInitializationSettings initializationSettingsDarwin =
         DarwinInitializationSettings(
-      requestAlertPermission: true,
-      requestBadgePermission: true,
-      requestSoundPermission: true,
-    );
+          requestAlertPermission: true,
+          requestBadgePermission: true,
+          requestSoundPermission: true,
+        );
 
     final InitializationSettings initializationSettings =
         InitializationSettings(
-      android: initializationSettingsAndroid,
-      iOS: initializationSettingsDarwin,
-    );
+          android: initializationSettingsAndroid,
+          iOS: initializationSettingsDarwin,
+        );
     await flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse:
           (NotificationResponse notificationResponse) async {
-        inspect(notificationResponse);
-        if (notificationResponse.payload != null) {
-          // ignore: avoid_print
-          print('notification payload: ${notificationResponse.payload}');
-        }
-      },
+            inspect(notificationResponse);
+            if (notificationResponse.payload != null) {
+              // ignore: avoid_print
+              print('notification payload: ${notificationResponse.payload}');
+            }
+          },
       onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
     );
   }
 
   Future<void> _isAndroidPermissionGranted() async {
-    if (Platform.isAndroid) {
+    if (PlatformHelper.isAndroid) {
       await flutterLocalNotificationsPlugin
               .resolvePlatformSpecificImplementation<
-                  AndroidFlutterLocalNotificationsPlugin>()
+                AndroidFlutterLocalNotificationsPlugin
+              >()
               ?.areNotificationsEnabled() ??
           false;
     }
   }
 
   Future<void> _requestPermissions() async {
-    if (Platform.isIOS || Platform.isMacOS) {
+    if (PlatformHelper.isIOS || PlatformHelper.isMacOS) {
       await flutterLocalNotificationsPlugin
           .resolvePlatformSpecificImplementation<
-              IOSFlutterLocalNotificationsPlugin>()
+            IOSFlutterLocalNotificationsPlugin
+          >()
           ?.requestPermissions(
             alert: true,
             badge: true,
@@ -92,17 +98,20 @@ class NotificationService {
           );
       await flutterLocalNotificationsPlugin
           .resolvePlatformSpecificImplementation<
-              MacOSFlutterLocalNotificationsPlugin>()
+            MacOSFlutterLocalNotificationsPlugin
+          >()
           ?.requestPermissions(
             alert: true,
             badge: true,
             sound: true,
             critical: true,
           );
-    } else if (Platform.isAndroid) {
+    } else if (PlatformHelper.isAndroid) {
       final AndroidFlutterLocalNotificationsPlugin? androidImplementation =
-          flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>();
+          flutterLocalNotificationsPlugin
+              .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin
+              >();
 
       await androidImplementation?.requestNotificationsPermission();
     }
@@ -110,14 +119,23 @@ class NotificationService {
 
   Future<void> showNotification(title, body, [link]) async {
     const AndroidNotificationDetails androidNotificationDetails =
-        AndroidNotificationDetails("1233", 'PushChannel',
-            channelDescription: 'FCMMessages',
-            importance: Importance.max,
-            priority: Priority.high,
-            ticker: 'ticker');
-    const NotificationDetails notificationDetails =
-        NotificationDetails(android: androidNotificationDetails);
-    await flutterLocalNotificationsPlugin
-        .show(123, title, body, notificationDetails, payload: link ?? 'item x');
+        AndroidNotificationDetails(
+          "1233",
+          'PushChannel',
+          channelDescription: 'FCMMessages',
+          importance: Importance.max,
+          priority: Priority.high,
+          ticker: 'ticker',
+        );
+    const NotificationDetails notificationDetails = NotificationDetails(
+      android: androidNotificationDetails,
+    );
+    await flutterLocalNotificationsPlugin.show(
+      123,
+      title,
+      body,
+      notificationDetails,
+      payload: link ?? 'item x',
+    );
   }
 }

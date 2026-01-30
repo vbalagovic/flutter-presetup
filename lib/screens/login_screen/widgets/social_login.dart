@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -13,9 +12,7 @@ import 'package:presetup/utilities/router.dart';
 import 'package:presetup/widgets/fp_button.dart';
 
 class SocialLogin extends ConsumerWidget {
-  const SocialLogin({
-    super.key,
-  });
+  const SocialLogin({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,21 +27,20 @@ class SocialLogin extends ConsumerWidget {
         //
       } else {
         showDialog(
-            context: context,
-            builder: (context) {
-              return GestureDetector(
-                onTap: (() => Navigator.pop(context)),
-                child: AlertDialog(
-                  title: const Center(
-                    child: Text('Failed'),
-                  ),
-                  content: Text(
-                    AuthExceptionHandler.generateExceptionMessage(status),
-                    textAlign: TextAlign.center,
-                  ),
+          context: context,
+          builder: (context) {
+            return GestureDetector(
+              onTap: (() => Navigator.pop(context)),
+              child: AlertDialog(
+                title: const Center(child: Text('Failed')),
+                content: Text(
+                  AuthExceptionHandler.generateExceptionMessage(status),
+                  textAlign: TextAlign.center,
                 ),
-              );
-            });
+              ),
+            );
+          },
+        );
       }
     }
 
@@ -151,11 +147,7 @@ class _SocialButton extends StatelessWidget {
         onTap: onPressed,
         child: Container(
           padding: const EdgeInsets.all(16),
-          child: Icon(
-            icon,
-            size: 24,
-            color: color,
-          ),
+          child: Icon(icon, size: 24, color: color),
         ),
       ),
     );
