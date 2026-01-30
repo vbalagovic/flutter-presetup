@@ -418,7 +418,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = R9776FTBUL;
+				DEVELOPMENT_TEAM = G763H4YRLD;
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = "facebook-app-id-prod";
 				FACEBOOK_CLIENT_ID = "facebook-app-token-prod";
@@ -557,7 +557,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = R9776FTBUL;
+				DEVELOPMENT_TEAM = G763H4YRLD;
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = "facebook-app-id-prod";
 				FACEBOOK_CLIENT_ID = "facebook-app-token-prod";
@@ -590,7 +590,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = R9776FTBUL;
+				DEVELOPMENT_TEAM = G763H4YRLD;
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = "facebook-app-id-prod";
 				FACEBOOK_CLIENT_ID = "facebook-app-token-prod";
@@ -677,7 +677,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = R9776FTBUL;
+				DEVELOPMENT_TEAM = G763H4YRLD;
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = "facebook-app-id-dev";
 				FACEBOOK_CLIENT_ID = "facebook-app-token-dev";
@@ -762,7 +762,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = R9776FTBUL;
+				DEVELOPMENT_TEAM = G763H4YRLD;
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = "facebook-app-id-dev";
 				FACEBOOK_CLIENT_ID = "facebook-app-token-dev";
@@ -844,7 +844,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = R9776FTBUL;
+				DEVELOPMENT_TEAM = G763H4YRLD;
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = "facebook-app-id-dev";
 				FACEBOOK_CLIENT_ID = "facebook-app-token-dev";
